@@ -1,0 +1,2880 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>禾一项目订单交互原型</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+
+</head>
+<body>
+<iframe id="codex-visualization" sandbox="allow-scripts" referrerpolicy="no-referrer" title="禾一项目订单交互原型" data-srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;禾一项目订单交互原型&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 16px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans:
+    -apple-system-body, ui-sans-serif, -apple-system, system-ui, &quot;Segoe UI&quot;,
+    Helvetica, &quot;Apple Color Emoji&quot;, Arial, sans-serif, &quot;Segoe UI Emoji&quot;,
+    &quot;Segoe UI Symbol&quot;;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 8px);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--font-size-base);
+  line-height: calc(var(--font-size-base) * 1.625);
+  font-weight: var(--font-weight-normal);
+}
+
+.cursor-interaction {
+  cursor: var(--cursor-interaction, pointer);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: var(--cursor-interaction, pointer);
+  text-decoration: none;
+  text-underline-offset: 2px;
+  font-weight: inherit;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+.table {
+  font-family: var(--font-sans);
+}
+
+h1 {
+  font-size: calc(var(--font-size-base) * 1.5);
+  line-height: 1.3333333333;
+}
+
+h2 {
+  font-size: calc(var(--font-size-base) * 1.25);
+  line-height: 1.4;
+}
+h3 {
+  font-size: calc(var(--font-size-base) * 1.125);
+  line-height: 1.5555555556;
+}
+h4 {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+h5,
+h6 {
+  font-size: var(--font-size-base);
+  line-height: calc(var(--font-size-base) * 1.625);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong,
+th {
+  font-weight: 600;
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+pre,
+pre code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: calc(var(--font-size-base) * 0.875);
+  line-height: calc(var(--font-size-base) * 1.625);
+  font-family: var(--font-sans);
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+.table :is(th, td):not(:last-child) {
+  padding-inline-end: calc(var(--font-size-base) * 1.5);
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead :is(th, td) {
+  border-bottom-color: var(--border-strong, var(--input));
+  padding-block: calc(var(--font-size-base) / 2);
+  line-height: var(--font-size-base);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+.table tbody :is(th, td) {
+  padding-block: calc(var(--font-size-base) * 0.625);
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 8px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+.widget {
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  box-shadow: 0 0 0 0.5px var(--border-strong, var(--border));
+  color: var(--foreground);
+  background: var(--background);
+}
+
+#widget &gt; :not(.card, .widget, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  border: 1px solid var(--border);
+  corner-shape: var(--corner-shape);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-sans);
+  padding: 5px 12px;
+  border-color: color-mix(
+    in oklab,
+    light-dark(var(--primary-foreground), var(--foreground)) 5%,
+    transparent
+  );
+  border-radius: var(--radius-2xl);
+  color: light-dark(var(--primary-foreground), var(--foreground));
+  background: light-dark(var(--foreground), var(--popover));
+  box-shadow: 0 8px 18px rgb(15 23 42 / 20%);
+  letter-spacing: -0.15px;
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  color: color-mix(in srgb, var(--foreground) 40%, var(--muted-foreground));
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-family: var(--font-sans);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 1;
+}
+
+small,
+.text-small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+/* Match inline alignment without overriding a containing flex or grid layout. */
+.btn,
+.nav-link,
+.form-control,
+.form-select,
+.form-range,
+.form-check {
+  vertical-align: middle;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  corner-shape: var(--corner-shape);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: inherit;
+  font-family: var(--font-sans);
+  height: fit-content;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding-inline: var(--control-spacing, 12px);
+  border-color: transparent;
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+}
+
+.btn {
+  border-color: var(--border);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: var(--cursor-interaction, pointer);
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.btn-primary {
+  border-color: var(--border);
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: border-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: border-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--muted-foreground);
+  background: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+/* Shared preview chrome; product styles stay inside each variant. */
+.viz-dotted-background {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--foreground) 14%, transparent) 0.8px,
+    transparent 0.8px
+  );
+  background-position: center;
+  background-size: 16px 16px;
+}
+
+.viz-carousel {
+  position: relative;
+  min-width: 0;
+}
+
+.viz-carousel:has(&gt; .viz-carousel-controls) {
+  min-height: calc(60px + var(--viz-carousel-picker-height, 0px));
+  padding-bottom: 60px;
+}
+
+.viz-carousel &gt; [data-variant][hidden] {
+  display: none !important;
+}
+
+.viz-carousel &gt; [data-variant] {
+  isolation: isolate;
+}
+
+.viz-carousel-controls {
+  --viz-carousel-hover: light-dark(
+    color-mix(in srgb, var(--foreground) 5.4%, transparent),
+    color-mix(in srgb, var(--foreground) 7.8%, transparent)
+  );
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 50%;
+  display: flex;
+  width: max-content;
+  /* Leave room for the host&#x27;s design-controls launcher at the trailing edge. */
+  max-width: calc(100% - 96px);
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  /* Match the settings dropdown chrome independently of the content font size. */
+  font-size: 13px;
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+/* Keep authored mockup button styles out of the shared carousel chrome. */
+.viz-carousel-controls button,
+.viz-carousel-picker &gt; summary {
+  display: flex !important;
+  height: auto !important;
+  min-height: 30px;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px;
+  padding: 0 6px !important;
+  -webkit-app-region: no-drag;
+  border: 0 !important;
+  border-radius: 14px !important;
+  color: inherit !important;
+  background: transparent !important;
+  font: inherit !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viz-carousel-controls &gt; button,
+.viz-carousel-picker &gt; summary {
+  position: relative;
+  isolation: isolate;
+}
+
+.viz-carousel-controls &gt; button {
+  --icon-size: 16px;
+  width: 30px !important;
+  padding: 0 !important;
+}
+
+.viz-carousel-picker &gt; summary {
+  padding-inline: 12px !important;
+}
+
+.viz-carousel-controls .viz-carousel-caret {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  margin: 0;
+  color: inherit;
+  transform: rotate(180deg);
+}
+
+.viz-carousel-controls &gt; button &gt; svg,
+.viz-carousel-controls .viz-carousel-caret,
+.viz-carousel-count {
+  opacity: 0.5;
+}
+
+.viz-carousel-controls &gt; button::before,
+.viz-carousel-picker &gt; summary::before {
+  position: absolute;
+  z-index: -1;
+  inset: 3px;
+  border-radius: 12px;
+  content: &quot;&quot;;
+  pointer-events: none;
+}
+
+.viz-carousel-controls &gt; button:hover::before,
+.viz-carousel-picker &gt; summary:hover::before {
+  background: var(--viz-carousel-hover);
+}
+
+.viz-carousel-controls &gt; button,
+.viz-carousel-controls [data-lucide],
+.viz-carousel-controls .lucide {
+  flex-shrink: 0;
+}
+
+.viz-carousel-picker {
+  min-width: 0;
+}
+
+.viz-carousel-picker &gt; summary {
+  min-width: 0;
+  list-style: none;
+}
+
+.viz-carousel-picker &gt; summary::-webkit-details-marker {
+  display: none;
+}
+
+.viz-carousel-count {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.viz-carousel-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.viz-carousel-options {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 4px);
+  left: 0;
+  display: flex;
+  max-height: 240px;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  box-shadow: 0 4px 12px light-dark(rgb(0 0 0 / 6%), rgb(0 0 0 / 25%));
+}
+
+.viz-carousel-options &gt; button {
+  border-radius: max(0px, calc(var(--radius-lg) - 5px)) !important;
+  width: 100% !important;
+  min-height: 28px;
+  justify-content: flex-start !important;
+  padding: 4px 8px !important;
+  font-size: var(--font-size-small) !important;
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.viz-carousel-options &gt; [aria-current=&quot;true&quot;],
+.viz-carousel-options &gt; button:hover {
+  background: var(--viz-carousel-hover) !important;
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding-inline: calc(4px + var(--control-spacing, 12px) / 2);
+  border-color: var(--input);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--popover) 96%, transparent);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.4285714286;
+}
+.form-control:is(
+  [type=&quot;file&quot;],
+  [type=&quot;date&quot;],
+  [type=&quot;datetime-local&quot;],
+  [type=&quot;month&quot;],
+  [type=&quot;week&quot;],
+  [type=&quot;color&quot;]
+) {
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  line-height: 18px;
+}
+.form-control:is(
+  [type=&quot;date&quot;],
+  [type=&quot;datetime-local&quot;],
+  [type=&quot;month&quot;],
+  [type=&quot;week&quot;]
+) {
+  padding-inline: var(--control-spacing, 12px);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+  padding: 0;
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+  min-height: calc(10px + 2 * var(--control-spacing, 12px));
+  padding-inline: var(--control-spacing, 12px);
+  margin-inline-end: var(--control-spacing, 12px);
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  resize: vertical;
+  min-height: 96px;
+  padding: 8px 10px;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: none;
+}
+.form-control:disabled {
+  color: var(--muted-foreground);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  opacity: 1;
+}
+.form-control[aria-invalid=&quot;true&quot;] {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--red) 20%, transparent);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: fit-content;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  margin: 0;
+  /* The secondary icon role is 14px at compact density and 16px at web density. */
+  --icon-size: calc(10px + var(--control-spacing, 12px) / 2);
+  /* Settings dropdowns retain a 12px inset and a 4px text-to-chevron gap. */
+  padding: 0 calc(16px + var(--icon-size)) 0 12px;
+  outline: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent calc(50% - 0.6px),
+      var(--muted-foreground) calc(50% - 0.6px) calc(50% + 0.6px),
+      transparent calc(50% + 0.6px)
+    ),
+    linear-gradient(
+      135deg,
+      transparent calc(50% - 0.6px),
+      var(--muted-foreground) calc(50% - 0.6px) calc(50% + 0.6px),
+      transparent calc(50% + 0.6px)
+    );
+  background-position:
+    calc(100% - 12px - var(--icon-size) / 2) 50%,
+    calc(100% - 12px - var(--icon-size) * 0.18) 50%;
+  background-repeat: no-repeat;
+  background-size: calc(var(--icon-size) * 0.32) calc(var(--icon-size) * 0.32);
+  cursor: var(--cursor-interaction, default);
+  font-size: calc(var(--font-size-base) * 14 / 16);
+  font-size: round(nearest, calc(var(--font-size-base) * 14 / 16), 1px);
+  font-weight: var(--font-weight-normal);
+  line-height: 18px;
+}
+
+.form-select :is(option, optgroup) {
+  color: var(--popover-foreground);
+  background-color: var(--popover);
+}
+
+.form-select :is(option, optgroup):disabled {
+  color: var(--muted-foreground);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: light-dark(
+    color-mix(in srgb, var(--foreground) 5.5%, transparent),
+    color-mix(in srgb, var(--foreground) 8%, transparent)
+  );
+}
+
+.form-select:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+.form-select:disabled {
+  opacity: 0.4;
+}
+
+.form-check {
+  display: flex;
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  corner-shape: round;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  width: calc(10px + var(--control-spacing, 12px) / 2);
+  height: calc(10px + var(--control-spacing, 12px) / 2);
+  border-color: var(--border-strong, var(--input));
+  border-radius: calc(var(--radius-sm) / 2);
+  background-color: transparent;
+  color: var(--foreground);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:is(:checked, :indeterminate) {
+  border-color: var(--border-strong, var(--input));
+  background-color: color-mix(in srgb, var(--popover) 96%, transparent);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+  background-color: var(--foreground);
+}
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:indeterminate::before {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 65%;
+  height: 6.65%;
+  margin: auto;
+  border-radius: var(--radius-full);
+  background: var(--foreground);
+  mask: none;
+  content: &quot;&quot;;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  border-radius: var(--radius-full);
+  width: 16px;
+  height: 16px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--input);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 0;
+  background: radial-gradient(
+    circle,
+    var(--primary-foreground) 0 3px,
+    var(--foreground) 3px
+  );
+  box-shadow: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:focus-visible {
+  border-color: var(--ring);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+.form-check:not(.form-switch) .form-check-input[type=&quot;radio&quot;]:disabled,
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;radio&quot;]:disabled
+  + .form-check-label {
+  opacity: 0.5;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  border-color: #fff;
+  background: #fff;
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--blue);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+  outline: none;
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  accent-color: var(--primary);
+  height: calc(12px + 2 * var(--control-spacing, 12px));
+  min-height: calc(12px + 2 * var(--control-spacing, 12px));
+  outline: none;
+  border-radius: var(--radius-full);
+  color: var(--foreground);
+  background: transparent;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  background: var(--form-range-track, var(--border));
+  height: 2px;
+  border-radius: var(--radius-full);
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  margin-top: -9px;
+  border-color: transparent;
+  background: currentColor;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Outline the native track and thumb, preserving the larger input hit area. */
+.form-range:focus-visible::-webkit-slider-runnable-track {
+  outline: 2px auto Highlight;
+  outline-color: -webkit-focus-ring-color;
+}
+
+.form-range::-moz-range-track {
+  background: var(--form-range-track, var(--border));
+  height: 2px;
+  border-radius: var(--radius-full);
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  border-color: transparent;
+  background: currentColor;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid Highlight;
+  outline-offset: 2px;
+}
+
+.form-range:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--blue);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.viz-carousel-controls :is(button, summary):focus-visible {
+  outline: 2px solid var(--ring) !important;
+  outline-offset: 2px !important;
+}
+
+/* Web recipes are the default, including on renderers without inline style queries. */
+@supports (border-radius: if(style(--corner-shape: round): 1px; else: 2px)) {
+  /* Match the host&#x27;s proportional text-sm scale at every text preference. */
+  .tooltip,
+  .viz-badge,
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    font-size: if(
+      style(--corner-shape: round): round(
+          nearest,
+          calc(var(--font-size-base) * 14 / 16),
+          1px
+        );
+        else: round(nearest, calc(var(--font-size-base) * 13 / 14), 1px)
+    );
+  }
+
+  .btn,
+  .nav-link,
+  .form-select {
+    border-radius: if(
+      style(--corner-shape: round): var(--radius-full); else: var(--radius-lg)
+    );
+  }
+
+  .form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+    border-radius: if(
+      style(--corner-shape: round): calc(var(--radius-sm) / 2);
+        else: calc(var(--radius-lg) * 0.4)
+    );
+  }
+
+  .tooltip {
+    font-weight: if(
+      style(--corner-shape: round): 600; else: var(--font-weight-normal)
+    );
+  }
+}
+
+@media (pointer: coarse) {
+  .viz-carousel:has(&gt; .viz-carousel-controls) {
+    min-height: calc(76px + var(--viz-carousel-picker-height, 0px));
+    padding-bottom: 76px;
+  }
+
+  .btn,
+  .nav-link,
+  .viz-carousel-controls button,
+  .viz-carousel-picker &gt; summary,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, calc(var(--font-size-base) * 14 / 16));
+    font-size: max(
+      16px,
+      round(nearest, calc(var(--font-size-base) * 14 / 16), 1px)
+    );
+  }
+  .form-control:is(
+    [type=&quot;file&quot;],
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;week&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;color&quot;]
+  ) {
+    height: 44px;
+    min-height: 44px;
+    font-size: max(16px, calc(var(--font-size-base) * 14 / 16));
+    font-size: max(
+      16px,
+      round(nearest, calc(var(--font-size-base) * 14 / 16), 1px)
+    );
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
+&lt;script&gt;(() =&gt; {
+  const root = document.documentElement;
+  const mediaQuery = globalThis.matchMedia(&quot;(prefers-color-scheme: dark)&quot;);
+  const apply = Reflect.apply;
+  const isArray = Array.isArray;
+  const hasOwn = Object.hasOwn;
+  const parentWindow = globalThis.parent;
+  const stringify = JSON.stringify;
+  const parse = JSON.parse;
+  const encode = TextEncoder.prototype.encode.bind(new TextEncoder());
+  const initialStateElement = document.getElementById(
+    &quot;codex-visualization-widget-state&quot;,
+  );
+  const initialGlobals = parse(initialStateElement?.textContent ?? &quot;{}&quot;);
+  initialStateElement?.remove();
+  /** @type {Record&lt;string, unknown&gt; | null} */
+  let state = initialGlobals.widgetState ?? null;
+  const statePersistence = initialGlobals.statePersistence ?? &quot;none&quot;;
+  let nextStateRequestId = 0;
+  /** @type {Map&lt;number, { resolve: () =&gt; void; reject: (error: Error) =&gt; void; timeout: ReturnType&lt;typeof globalThis.setTimeout&gt;; serializedState: string }&gt;} */
+  const pendingStateWrites = new Map();
+  const persistenceError = () =&gt;
+    Object.assign(
+      new Error(&quot;The host could not persist the widget state update&quot;),
+      {
+        code: -32000,
+        data: { code: &quot;widget_state_persistence_failed&quot;, retryable: false },
+      },
+    );
+  /**
+   * @param {object} prototype
+   * @param {string} property
+   */
+  const getPrototypeGetter = (prototype, property) =&gt; {
+    // oxlint-disable-next-line typescript/unbound-method -- invoked through captured Reflect.apply
+    const getter = Object.getOwnPropertyDescriptor(prototype, property)?.get;
+    if (getter == null) {
+      throw new Error(`Missing ${property} getter`);
+    }
+    return getter;
+  };
+  const getMessageData = getPrototypeGetter(MessageEvent.prototype, &quot;data&quot;);
+  const getMessagePorts = getPrototypeGetter(MessageEvent.prototype, &quot;ports&quot;);
+  const getMessageSource = getPrototypeGetter(MessageEvent.prototype, &quot;source&quot;);
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const addHostMessageListener = MessagePort.prototype.addEventListener;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const postHostMessage = MessagePort.prototype.postMessage;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const startHostPort = MessagePort.prototype.start;
+  // oxlint-disable-next-line typescript/unbound-method -- captured before the untrusted fragment runs
+  const stopMessagePropagation = Event.prototype.stopImmediatePropagation;
+  /** @type {MessagePort | null} */
+  let hostPort = null;
+  const postToHost = (type, payload) =&gt; {
+    if (hostPort != null) {
+      apply(postHostMessage, hostPort, [{ type, ...payload }]);
+    }
+  };
+  const openExternal = ({ href }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;open-external&quot;, { href });
+    }
+  };
+  const sendFollowUpMessage = ({ context, prompt, title }) =&gt; {
+    if (globalThis.navigator.userActivation?.isActive === true) {
+      postToHost(&quot;follow-up&quot;, { context, prompt, title });
+    }
+    return Promise.resolve();
+  };
+  /**
+   * @param {Record&lt;string, unknown&gt; | ((previous: Record&lt;string, unknown&gt; | null) =&gt; Record&lt;string, unknown&gt;)} next
+   * @returns {Promise&lt;void&gt;}
+   */
+  const setWidgetState = async (next) =&gt; {
+    const nextState = typeof next === &quot;function&quot; ? next(state) : next;
+    if (
+      nextState == null ||
+      typeof nextState !== &quot;object&quot; ||
+      isArray(nextState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const inputState = stringify(
+      nextState,
+      (_key, /** @type {unknown} */ value) =&gt; {
+        if (
+          typeof value === &quot;undefined&quot; ||
+          typeof value === &quot;function&quot; ||
+          typeof value === &quot;symbol&quot; ||
+          (typeof value === &quot;number&quot; &amp;&amp; !Number.isFinite(value))
+        ) {
+          throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+        }
+        return value;
+      },
+    );
+    const parsedState = parse(inputState);
+    if (
+      parsedState == null ||
+      typeof parsedState !== &quot;object&quot; ||
+      isArray(parsedState)
+    ) {
+      throw new TypeError(&quot;Widget state must be a JSON object&quot;);
+    }
+    const storedState = {
+      modelContent: null,
+      privateContent: null,
+      ...parsedState,
+    };
+    const serializedState = stringify(storedState);
+    if (encode(serializedState).length &gt; 16 * 1024) {
+      throw new TypeError(
+        &quot;Widget state must be a JSON object of at most 16 KiB&quot;,
+      );
+    }
+    if (
+      hasOwn(storedState, &quot;imageIds&quot;) &amp;&amp;
+      (!isArray(storedState.imageIds) ||
+        storedState.imageIds.some(
+          (/** @type {unknown} */ id) =&gt; typeof id !== &quot;string&quot;,
+        ))
+    ) {
+      throw new TypeError(&quot;Widget state imageIds must be an array of strings&quot;);
+    }
+    if (storedState.imageIds?.length &gt; 0) {
+      throw Object.assign(
+        new TypeError(&quot;Visualization state does not support image attachments&quot;),
+        { code: -32602, data: { code: &quot;images_unsupported&quot; } },
+      );
+    }
+    state = storedState;
+    globalThis.openai.widgetState = state;
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: { widgetState: state } },
+      }),
+    );
+    if (statePersistence === &quot;none&quot;) {
+      throw persistenceError();
+    }
+    const id = ++nextStateRequestId;
+    return new Promise((resolve, reject) =&gt; {
+      const timeout = globalThis.setTimeout(() =&gt; {
+        pendingStateWrites.delete(id);
+        reject(persistenceError());
+      }, 30_000);
+      pendingStateWrites.set(id, { resolve, reject, timeout, serializedState });
+      postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+    });
+  };
+  const syncTheme = () =&gt; {
+    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    root.dataset.theme = theme;
+    globalThis.openai = {
+      ...globalThis.openai,
+      openExternal,
+      sendFollowUpMessage,
+      setWidgetState,
+      theme,
+      visualizationStyleVariables: {},
+      visualizationTheme: theme,
+      widgetState: state,
+      statePersistence,
+      stateModelContext: &quot;none&quot;,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent(&quot;openai:set_globals&quot;, {
+        detail: { globals: globalThis.openai },
+      }),
+    );
+  };
+  const sendHeight = () =&gt; {
+    postToHost(&quot;height&quot;, {
+      height: Math.ceil(
+        Math.max(
+          document.body.scrollHeight,
+          document.body.getBoundingClientRect().height,
+        ),
+      ),
+    });
+  };
+
+  globalThis.addEventListener(
+    &quot;message&quot;,
+    (event) =&gt; {
+      const data = apply(getMessageData, event, []);
+      const ports = apply(getMessagePorts, event, []);
+      const source = apply(getMessageSource, event, []);
+      if (
+        hostPort != null ||
+        source !== parentWindow ||
+        typeof data !== &quot;object&quot; ||
+        data?.type !== &quot;codex-visualization-initialize&quot; ||
+        !isArray(ports) ||
+        ports.length !== 1
+      ) {
+        return;
+      }
+      apply(stopMessagePropagation, event, []);
+      const nextHostPort = ports[0];
+      try {
+        apply(addHostMessageListener, nextHostPort, [
+          &quot;message&quot;,
+          (event) =&gt; {
+            const data = apply(getMessageData, event, []);
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+              sendHeight();
+            } else if (
+              typeof data === &quot;object&quot; &amp;&amp;
+              data?.type === &quot;widget-state-result&quot;
+            ) {
+              /** @type {unknown} */
+              const id = data.id;
+              if (typeof id !== &quot;number&quot;) {
+                return;
+              }
+              const pending = pendingStateWrites.get(id);
+              if (pending != null) {
+                pendingStateWrites.delete(id);
+                globalThis.clearTimeout(pending.timeout);
+                if (data.ok === true) {
+                  pending.resolve();
+                } else {
+                  pending.reject(persistenceError());
+                }
+              }
+            }
+          },
+        ]);
+        apply(startHostPort, nextHostPort, []);
+      } catch {
+        return;
+      }
+      hostPort = nextHostPort;
+      for (const [id, { serializedState }] of pendingStateWrites) {
+        postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
+      }
+      sendHeight();
+    },
+    { capture: true },
+  );
+  document.currentScript?.remove();
+  mediaQuery.addEventListener(&quot;change&quot;, syncTheme);
+  globalThis.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.defaultPrevented) {
+      return;
+    }
+    let element = null;
+    if (event.target instanceof globalThis.Element) {
+      element = event.target;
+    } else if (event.target instanceof globalThis.Node) {
+      element = event.target.parentElement;
+    }
+    const link = element?.closest(&quot;a[href]&quot;);
+    const href = link?.getAttribute(&quot;href&quot;);
+    if (href == null) {
+      return;
+    }
+    if (href.startsWith(&quot;#&quot;)) {
+      let id;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
+      const target = id.length === 0 ? root : document.getElementById(id);
+      if (
+        target == null ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      event.preventDefault();
+      postToHost(&quot;scroll-to&quot;, {
+        top: target.getBoundingClientRect().top + globalThis.scrollY,
+      });
+      return;
+    }
+    event.preventDefault();
+    openExternal({ href });
+  });
+  new ResizeObserver(sendHeight).observe(document.body);
+  syncTheme();
+})();
+&lt;/script&gt;
+&lt;div id=&quot;heyi-order-prototype&quot; class=&quot;viz-dotted-background&quot;&gt;
+&lt;style&gt;
+#heyi-order-prototype{padding:18px 0}
+#heyi-order-prototype .hy-app{--bg:light-dark(#f3f5f1,#181f1b);--paper:light-dark(#fff,#232d26);--ink:light-dark(#24352a,#e6ede7);--muted:light-dark(#68766c,#b3bfb6);--line:light-dark(#dfe6df,#3b4b40);--accent:light-dark(#286744,#a1d4b0);--soft:light-dark(#e8f2e9,#2c4333);--button:light-dark(#286744,#a1d4b0);--on:light-dark(#fff,#183022);--warn:light-dark(#815d28,#e6c082);--warm:light-dark(#faf0df,#493d29);--bad:light-dark(#ab3434,#ffaaaa);width:min(100%,430px);margin:auto;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:24px;overflow:hidden;font:14px/1.6 -apple-system,BlinkMacSystemFont,&quot;PingFang SC&quot;,&quot;Microsoft YaHei&quot;,sans-serif}
+#heyi-order-prototype .hy-app *{box-sizing:border-box}
+#heyi-order-prototype .hy-app button,#heyi-order-prototype .hy-app input,#heyi-order-prototype .hy-app textarea,#heyi-order-prototype .hy-app select{font:inherit;color:inherit}
+#heyi-order-prototype button{min-height:44px;border:0;background:none;padding:9px 12px}
+#heyi-order-prototype button:focus-visible,#heyi-order-prototype input:focus-visible,#heyi-order-prototype textarea:focus-visible,#heyi-order-prototype select:focus-visible,#heyi-order-prototype summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#heyi-order-prototype button:disabled{opacity:.48}
+#heyi-order-prototype h1{font-size:24px;line-height:1.35;font-weight:500;margin:3px 0 7px}
+#heyi-order-prototype h2{font-size:19px;line-height:1.45;font-weight:500;margin:0 0 8px}
+#heyi-order-prototype h3{font-size:16px;line-height:1.5;font-weight:500;margin:0 0 6px}
+#heyi-order-prototype p{margin:5px 0 12px}
+#heyi-order-prototype strong{font-weight:500}
+#heyi-order-prototype .hy-head{padding:18px 20px 12px;background:var(--paper)}
+#heyi-order-prototype .hy-kicker{font-size:12px;color:var(--muted);letter-spacing:.03em}
+#heyi-order-prototype .hy-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+#heyi-order-prototype .hy-top button{padding:4px 0;color:var(--accent)}
+#heyi-order-prototype .hy-sub{font-size:13px;color:var(--muted)}
+#heyi-order-prototype .hy-body{padding:16px;min-height:440px}
+#heyi-order-prototype .hy-box{background:var(--paper);border-radius:14px;padding:16px;margin-bottom:14px}
+#heyi-order-prototype .hy-task{background:var(--soft)}
+#heyi-order-prototype .hy-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+#heyi-order-prototype .hy-row&gt;*{min-width:0}
+#heyi-order-prototype .hy-tag{font-size:12px;color:var(--accent);white-space:nowrap}
+#heyi-order-prototype .hy-warn{color:var(--warn)}
+#heyi-order-prototype .hy-note{background:var(--warm);color:var(--warn);border-radius:9px;padding:10px 12px;font-size:13px;margin:10px 0}
+#heyi-order-prototype .hy-app button.hy-primary{background:var(--button);color:var(--on);border-radius:9px;width:100%;padding:11px 12px;font-weight:500}
+#heyi-order-prototype .hy-secondary{background:var(--paper);border:1px solid var(--line);border-radius:9px;width:100%;padding:10px 12px}
+#heyi-order-prototype .hy-link{padding:8px 0;color:var(--accent);text-align:left}
+#heyi-order-prototype .hy-actions{display:flex;gap:10px;margin-top:14px}
+#heyi-order-prototype .hy-actions&gt;button{flex:1;min-width:0}
+#heyi-order-prototype .hy-tabs{display:flex;background:var(--paper);padding:0 12px;border-bottom:1px solid var(--line)}
+#heyi-order-prototype .hy-tabs button{flex:1;padding:12px 3px;white-space:nowrap;border-bottom:3px solid transparent}
+#heyi-order-prototype .hy-tabs button[aria-selected=true]{border-bottom-color:var(--accent);color:var(--accent);font-weight:500}
+#heyi-order-prototype .hy-filters{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}
+#heyi-order-prototype .hy-filters button{padding:7px 12px;border-radius:8px;color:var(--muted)}
+#heyi-order-prototype .hy-filters button[aria-pressed=true]{background:var(--soft);color:var(--accent);font-weight:500}
+#heyi-order-prototype .hy-project{display:block;width:100%;padding:17px;text-align:left;border-radius:14px;background:var(--paper);margin-bottom:12px}
+#heyi-order-prototype .hy-project h3{margin:0;font-size:17px}
+#heyi-order-prototype .hy-project .hy-sub{margin:6px 0 12px}
+#heyi-order-prototype .hy-project-foot{padding-top:12px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:space-between;align-items:center}
+#heyi-order-prototype .hy-project-foot&gt;span:first-child{min-width:0}
+#heyi-order-prototype .hy-project-foot&gt;span:last-child{color:var(--accent);white-space:nowrap}
+#heyi-order-prototype .hy-progress{list-style:none;margin:14px 0 0;padding:0}
+#heyi-order-prototype .hy-progress li{position:relative;padding:0 0 16px 23px}
+#heyi-order-prototype .hy-progress li:before{content:&quot;&quot;;position:absolute;left:3px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--line)}
+#heyi-order-prototype .hy-progress li:after{content:&quot;&quot;;position:absolute;left:6px;top:18px;bottom:2px;width:1px;background:var(--line)}
+#heyi-order-prototype .hy-progress li:last-child{padding-bottom:0}
+#heyi-order-prototype .hy-progress li:last-child:after{display:none}
+#heyi-order-prototype .hy-progress li.is-current:before{background:var(--accent)}
+#heyi-order-prototype .hy-progress li.is-current{font-weight:500}
+#heyi-order-prototype .hy-entry{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;border-top:1px solid var(--line);padding:13px 0}
+#heyi-order-prototype .hy-entry:first-child{border-top:0}
+#heyi-order-prototype .hy-entry .hy-arrow{color:var(--muted);flex-shrink:0;font-size:20px}
+#heyi-order-prototype .hy-entry small{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+#heyi-order-prototype .hy-amount{font-size:29px;font-weight:500;font-variant-numeric:tabular-nums;margin:4px 0 12px;line-height:1.35}
+#heyi-order-prototype .hy-payment{border-bottom:1px solid var(--line);padding:12px 0}
+#heyi-order-prototype .hy-payment:last-child{border:0}
+#heyi-order-prototype .hy-line{border:0;border-top:1px solid var(--line);margin:14px 0}
+#heyi-order-prototype .hy-data{display:grid;grid-template-columns:76px 1fr;gap:10px 14px;margin:12px 0}
+#heyi-order-prototype .hy-data dt{color:var(--muted)}
+#heyi-order-prototype .hy-data dd{margin:0;overflow-wrap:anywhere}
+#heyi-order-prototype .hy-list{padding-left:20px;margin:8px 0 0}
+#heyi-order-prototype .hy-list li{margin-bottom:7px}
+#heyi-order-prototype .hy-preview{padding:17px;background:var(--paper);border:1px solid var(--line);border-radius:10px;margin:12px 0}
+#heyi-order-prototype .hy-plan{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:4px;height:180px;padding:6px;border:2px solid var(--muted);margin:14px 0}
+#heyi-order-prototype .hy-plan span{display:flex;align-items:center;justify-content:center;text-align:center;padding:5px;background:var(--soft);font-size:12px}
+#heyi-order-prototype .hy-plan .hy-open{grid-row:span 2}
+#heyi-order-prototype label{display:block;font-size:14px;margin:12px 0 5px}
+#heyi-order-prototype textarea,#heyi-order-prototype input,#heyi-order-prototype select{display:block;width:100%;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:44px;font-size:16px!important}
+#heyi-order-prototype textarea{min-height:120px;resize:vertical}
+#heyi-order-prototype .hy-check{display:flex;align-items:flex-start;gap:10px;margin:16px 0}
+#heyi-order-prototype .hy-check input{width:18px;min-height:18px;height:18px;margin-top:4px;flex-shrink:0}
+#heyi-order-prototype .hy-error{color:var(--bad);font-size:13px;margin:8px 0}
+#heyi-order-prototype .hy-bottom{display:grid;grid-template-columns:repeat(4,1fr);padding:7px 8px 10px;background:var(--paper);border-top:1px solid var(--line)}
+#heyi-order-prototype .hy-bottom button{color:var(--muted);padding:8px 3px}
+#heyi-order-prototype .hy-bottom [aria-current]{color:var(--accent);font-weight:500}
+#heyi-order-prototype .hy-toast{padding:10px 16px;background:var(--soft);font-size:13px;color:var(--accent);border-bottom:1px solid var(--line)}
+#heyi-order-prototype .hy-empty{padding:36px 12px;text-align:center;color:var(--muted)}
+#heyi-order-prototype .hy-demo{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 16px;background:var(--paper);border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+#heyi-order-prototype .hy-demo button{font-size:12px;padding:4px 0;color:var(--muted)}
+#heyi-order-prototype dialog{color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:16px;width:min(370px,calc(100% - 32px));padding:22px;max-height:85vh;overflow:auto}
+#heyi-order-prototype dialog::backdrop{background:#0007}
+#heyi-order-prototype [hidden]{display:none!important}
+@media(max-width:360px){#heyi-order-prototype .hy-head{padding:16px 14px 10px}#heyi-order-prototype .hy-body{padding:12px}#heyi-order-prototype .hy-box{padding:14px}#heyi-order-prototype .hy-project{padding:14px}#heyi-order-prototype .hy-filters{gap:0}#heyi-order-prototype .hy-filters button{padding:6px 8px}#heyi-order-prototype .hy-project h3{font-size:16px}}
+&lt;/style&gt;
+&lt;article class=&quot;hy-app&quot; aria-label=&quot;禾一项目订单三层交互原型&quot;&gt;
+  &lt;div id=&quot;hy-screen&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;hy-demo&quot;&gt;&lt;span&gt;交互原型 · 示例项目与金额 · 无真实交易&lt;/span&gt;&lt;button type=&quot;button&quot; data-action=&quot;reset&quot;&gt;重新体验&lt;/button&gt;&lt;/div&gt;
+  &lt;div id=&quot;hy-live&quot; role=&quot;status&quot; aria-live=&quot;polite&quot; style=&quot;padding:0 16px&quot;&gt;&lt;/div&gt;
+  &lt;dialog id=&quot;hy-dialog&quot; aria-labelledby=&quot;hy-dialog-title&quot;&gt;&lt;h2 id=&quot;hy-dialog-title&quot;&gt;&lt;/h2&gt;&lt;div id=&quot;hy-dialog-content&quot;&gt;&lt;/div&gt;&lt;div class=&quot;hy-actions&quot;&gt;&lt;button class=&quot;hy-secondary&quot; type=&quot;button&quot; data-action=&quot;dismiss&quot;&gt;返回&lt;/button&gt;&lt;button class=&quot;hy-primary&quot; type=&quot;button&quot; id=&quot;hy-dialog-confirm&quot; data-action=&quot;commit&quot;&gt;确认&lt;/button&gt;&lt;/div&gt;&lt;/dialog&gt;
+&lt;/article&gt;
+&lt;script&gt;
+(()=&gt;{
+ const root=document.getElementById(&#x27;heyi-order-prototype&#x27;),screen=root.querySelector(&#x27;#hy-screen&#x27;),dialog=root.querySelector(&#x27;#hy-dialog&#x27;);
+ const phases=[&#x27;策划&#x27;,&#x27;概念设计&#x27;,&#x27;方案设计&#x27;,&#x27;施工图设计&#x27;,&#x27;现场配合&#x27;,&#x27;验收结算&#x27;];
+ const seed=[
+  {id:&#x27;guanggu&#x27;,name:&#x27;江夏办公空间设计&#x27;,area:800,region:&#x27;武汉 · 东湖高新区&#x27;,base:80000,mode:&#x27;review&#x27;,stage:2,paid:[true,false,false,false],version:2,schedule:&#x27;pending&#x27;,addendum:&#x27;none&#x27;,contact:&#x27;陈经理&#x27;,address:&#x27;光谷软件园办公楼&#x27;,comment:&#x27;&#x27;,remit:-1},
+  {id:&#x27;hankou&#x27;,name:&#x27;汉口总部办公设计&#x27;,area:600,region:&#x27;武汉 · 江汉区&#x27;,base:60000,mode:&#x27;quote&#x27;,stage:-1,paid:[false,false,false,false],version:1,schedule:&#x27;none&#x27;,addendum:&#x27;none&#x27;,contact:&#x27;林经理&#x27;,address:&#x27;泛海商务区办公楼&#x27;,comment:&#x27;&#x27;,remit:-1},
+  {id:&#x27;wuchang&#x27;,name:&#x27;武昌联合办公设计&#x27;,area:1200,region:&#x27;武汉 · 武昌区&#x27;,base:120000,mode:&#x27;pay&#x27;,stage:2,paid:[true,false,false,false],version:2,schedule:&#x27;none&#x27;,addendum:&#x27;pending&#x27;,contact:&#x27;周经理&#x27;,address:&#x27;中南路办公楼&#x27;,comment:&#x27;&#x27;,remit:-1},
+  {id:&#x27;jiangxia&#x27;,name:&#x27;江夏研发中心设计&#x27;,area:1000,region:&#x27;武汉 · 江夏区&#x27;,base:100000,mode:&#x27;complete&#x27;,stage:6,paid:[true,true,true,true],version:3,schedule:&#x27;none&#x27;,addendum:&#x27;none&#x27;,contact:&#x27;陈经理&#x27;,address:&#x27;藏龙岛研发中心&#x27;,comment:&#x27;&#x27;,remit:-1}
+ ];
+ const fresh=()=&gt;({v:3,projects:JSON.parse(JSON.stringify(seed)),route:{page:&#x27;list&#x27;,id:null,tab:&#x27;overview&#x27;,item:&#x27;&#x27;,arg:&#x27;&#x27;},filter:&#x27;all&#x27;,trail:[],notice:&#x27;&#x27;});
+ let s=fresh(),pending=null;
+ const saved=window.openai?.widgetState?.privateContent;
+ function restore(v){if(v?.v===3&amp;&amp;Array.isArray(v.projects)&amp;&amp;v.projects.length===4&amp;&amp;v.projects.every((p,i)=&gt;p.id===seed[i].id)&amp;&amp;v.route){s=v;s.notice=&#x27;&#x27;;s.trail=Array.isArray(s.trail)?s.trail.slice(-12):[];if(![&#x27;list&#x27;,&#x27;detail&#x27;,&#x27;item&#x27;].includes(s.route.page))s.route=fresh().route;}}
+ restore(saved);
+ s.projects.find(p=&gt;p.id===&#x27;guanggu&#x27;).name=seed[0].name;
+ const esc=v=&gt;String(v??&#x27;&#x27;).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,c=&gt;({&#x27;&amp;&#x27;:&#x27;&amp;amp;&#x27;,&#x27;&lt;&#x27;:&#x27;&amp;lt;&#x27;,&#x27;&gt;&#x27;:&#x27;&amp;gt;&#x27;,&#x27;&quot;&#x27;:&#x27;&amp;quot;&#x27;,&quot;&#x27;&quot;:&#x27;&amp;#39;&#x27;}[c]));
+ const money=n=&gt;&#x27;¥&#x27;+Number(n).toLocaleString(&#x27;zh-CN&#x27;);
+ const project=()=&gt;s.projects.find(p=&gt;p.id===s.route.id)||s.projects[0];
+ const total=p=&gt;p.base+(p.addendum===&#x27;accepted&#x27;?6000:0);
+ const plannedDate=p=&gt;p.addendum===&#x27;accepted&#x27;?&#x27;11月25日&#x27;:p.schedule===&#x27;accepted&#x27;?&#x27;11月23日&#x27;:&#x27;11月20日&#x27;;
+ const parts=p=&gt;[p.base*.3,p.base*.3,p.base*.3+(p.addendum===&#x27;accepted&#x27;?6000:0),p.base*.1];
+ const paid=p=&gt;parts(p).reduce((n,a,i)=&gt;n+(p.paid[i]?a:0),0);
+ const pre=p=&gt;[&#x27;quote&#x27;,&#x27;sign&#x27;].includes(p.mode);
+ const due=p=&gt;p.mode===&#x27;firstpay&#x27;?0:p.mode===&#x27;pay&#x27;?1:p.mode===&#x27;checking&#x27;?p.remit:-1;
+ const btn=(label,action,extra=&#x27;&#x27;,cls=&#x27;hy-primary&#x27;)=&gt;`&lt;button type=&quot;button&quot; class=&quot;${cls}&quot; data-action=&quot;${action}&quot; ${extra}&gt;${label}&lt;/button&gt;`;
+ const entry=(title,sub,item,arg=&#x27;&#x27;)=&gt;`&lt;button type=&quot;button&quot; class=&quot;hy-entry&quot; data-action=&quot;item&quot; data-item=&quot;${item}&quot; data-arg=&quot;${arg}&quot;&gt;&lt;span&gt;${title}${sub?`&lt;small&gt;${sub}&lt;/small&gt;`:&#x27;&#x27;}&lt;/span&gt;&lt;span class=&quot;hy-arrow&quot; aria-hidden=&quot;true&quot;&gt;›&lt;/span&gt;&lt;/button&gt;`;
+ const data=arr=&gt;`&lt;dl class=&quot;hy-data&quot;&gt;${arr.map(([k,v])=&gt;`&lt;dt&gt;${k}&lt;/dt&gt;&lt;dd&gt;${v}&lt;/dd&gt;`).join(&#x27;&#x27;)}&lt;/dl&gt;`;
+ function persist(){if(window.openai?.setWidgetState)window.openai.setWidgetState({modelContent:{prototype:&#x27;项目列表 → 项目详情 → 具体事项&#x27;,page:s.route.page,project:s.route.id,tab:s.route.tab,item:s.route.item},privateContent:s}).catch(()=&gt;{});}
+ function go(route,push=true){if(push)s.trail.push({...s.route});s.trail=s.trail.slice(-12);s.route={...s.route,...route};s.notice=&#x27;&#x27;;render();persist();}
+ function back(){s.route=s.trail.pop()||fresh().route;s.notice=&#x27;&#x27;;render();persist();}
+ function announce(t){s.notice=t;root.querySelector(&#x27;#hy-live&#x27;).textContent=t;}
+ function detailAfter(t){s.route={page:&#x27;detail&#x27;,id:project().id,tab:&#x27;overview&#x27;,item:&#x27;&#x27;,arg:&#x27;&#x27;};s.trail=[fresh().route];s.notice=t;render();persist();}
+ function tasks(p){const t=[];
+  const main={quote:[&#x27;服务方案与报价待确认&#x27;,&#x27;了解全阶段服务范围、总价和分阶段付款计划。&#x27;,&#x27;查看方案与报价&#x27;,&#x27;quote&#x27;,&#x27;&#x27;],sign:[&#x27;服务方案已确认，请签约&#x27;,&#x27;合同覆盖全阶段设计服务，按约分阶段付款。&#x27;,&#x27;查看合同&#x27;,&#x27;contract&#x27;,&#x27;&#x27;],firstpay:[&#x27;合同已签署，首款待支付&#x27;,&#x27;核实合同节点与收款信息后办理付款。&#x27;,&#x27;查看首款&#x27;,&#x27;payment&#x27;,&#x27;0&#x27;],review:[&#x27;方案设计成果待您确认&#x27;,`V${p.version} 已审核发布，可提出修改或确认本阶段成果。`,&#x27;查看成果&#x27;,&#x27;result&#x27;,&#x27;latest&#x27;],pay:[&#x27;方案节点款待支付&#x27;,&#x27;方案成果已确认，请按约完成本次付款。&#x27;,&#x27;查看本次付款&#x27;,&#x27;payment&#x27;,&#x27;1&#x27;]};
+  if(main[p.mode]){const a=main[p.mode];t.push({title:a[0],text:a[1],label:a[2],item:a[3],arg:a[4]});}
+  if(p.schedule===&#x27;pending&#x27;)t.push({title:&#x27;施工图交付日期待确认&#x27;,text:&#x27;拟由 11月20日 调整至 11月23日。&#x27;,label:&#x27;查看改期申请&#x27;,item:&#x27;schedule&#x27;,arg:&#x27;&#x27;});
+  if(p.addendum===&#x27;pending&#x27;)t.push({title:&#x27;新增会议室设计待确认&#x27;,text:&#x27;新增服务 ¥6,000，查看范围及工期影响。&#x27;,label:&#x27;查看增补&#x27;,item:&#x27;addendum&#x27;,arg:&#x27;&#x27;});
+  return t;
+ }
+ function status(p){return({quote:&#x27;待确认报价&#x27;,sign:&#x27;待签约&#x27;,firstpay:&#x27;待付首款&#x27;,review:&#x27;待确认成果&#x27;,pay:&#x27;待付款&#x27;,checking:&#x27;款项核对中&#x27;,revising:&#x27;修改处理中&#x27;,working:&#x27;设计进行中&#x27;,complete:&#x27;已完成&#x27;})[p.mode]||&#x27;服务中&#x27;;}
+ function header(title,subtitle=&#x27;&#x27;,level=&#x27;项目详情&#x27;){const list=s.route.page===&#x27;list&#x27;;return `&lt;header class=&quot;hy-head&quot;&gt;&lt;div class=&quot;hy-top&quot;&gt;${list?&#x27;&lt;span class=&quot;hy-kicker&quot;&gt;HE YI · 禾一设计&lt;/span&gt;&#x27;:btn(&#x27;‹ 返回&#x27;,&#x27;back&#x27;,&#x27;&#x27;,&#x27;hy-link&#x27;)}&lt;span class=&quot;hy-kicker&quot;&gt;${list?&#x27;项目列表&#x27;:level}&lt;/span&gt;&lt;/div&gt;&lt;h1&gt;${title}&lt;/h1&gt;${subtitle?`&lt;div class=&quot;hy-sub&quot;&gt;${subtitle}&lt;/div&gt;`:&#x27;&#x27;}&lt;/header&gt;`;}
+ function listPage(){const shown=s.projects.filter(p=&gt;s.filter===&#x27;all&#x27;||(s.filter===&#x27;todo&#x27;?tasks(p).length&gt;0:s.filter===&#x27;active&#x27;?p.mode!==&#x27;complete&#x27;:p.mode===&#x27;complete&#x27;));
+  return header(&#x27;我的项目&#x27;,&#x27;从需求沟通到全阶段交付，在这里持续跟进。&#x27;)+`&lt;main class=&quot;hy-body&quot;&gt;&lt;div class=&quot;hy-filters&quot; aria-label=&quot;项目筛选&quot;&gt;${[[&#x27;all&#x27;,&#x27;全部&#x27;],[&#x27;todo&#x27;,&#x27;待我处理&#x27;],[&#x27;active&#x27;,&#x27;进行中&#x27;],[&#x27;done&#x27;,&#x27;已结束&#x27;]].map(([k,n])=&gt;`&lt;button type=&quot;button&quot; data-action=&quot;filter&quot; data-filter=&quot;${k}&quot; aria-pressed=&quot;${s.filter===k}&quot;&gt;${n}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;${shown.map(p=&gt;`&lt;button type=&quot;button&quot; class=&quot;hy-project&quot; data-action=&quot;open&quot; data-id=&quot;${p.id}&quot;&gt;&lt;div class=&quot;hy-row&quot;&gt;&lt;h3&gt;${p.name}&lt;/h3&gt;&lt;span class=&quot;hy-tag&quot;&gt;${status(p)}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;hy-sub&quot;&gt;${p.region} · ${p.area}㎡ · ${pre(p)?&#x27;方案沟通中&#x27;:&#x27;全阶段设计服务&#x27;}&lt;/div&gt;&lt;div class=&quot;hy-project-foot&quot;&gt;&lt;span&gt;${tasks(p).length?`${tasks(p).length} 项待办 · ${tasks(p)[0].label}`:p.mode===&#x27;complete&#x27;?&#x27;成果与合同已归档&#x27;:p.mode===&#x27;revising&#x27;?&#x27;已提交修改意见，等待回复&#x27;:&#x27;负责人正在跟进&#x27;}&lt;/span&gt;&lt;span&gt;进入项目 ›&lt;/span&gt;&lt;/div&gt;&lt;/button&gt;`).join(&#x27;&#x27;)||&#x27;&lt;div class=&quot;hy-empty&quot;&gt;目前没有这类项目。&lt;/div&gt;&#x27;}&lt;/main&gt;&lt;nav class=&quot;hy-bottom&quot; aria-label=&quot;底部栏目&quot;&gt;&lt;button type=&quot;button&quot; data-action=&quot;navstub&quot;&gt;首页&lt;/button&gt;&lt;button type=&quot;button&quot; data-action=&quot;navstub&quot;&gt;发布&lt;/button&gt;&lt;button type=&quot;button&quot; aria-current=&quot;page&quot; data-action=&quot;list&quot;&gt;订单&lt;/button&gt;&lt;button type=&quot;button&quot; data-action=&quot;navstub&quot;&gt;设置&lt;/button&gt;&lt;/nav&gt;`;
+ }
+ function overview(p){let ts=tasks(p),html=&#x27;&#x27;;
+  if(ts.length){const t=ts[0];html+=`&lt;section class=&quot;hy-box hy-task&quot;&gt;&lt;div class=&quot;hy-kicker&quot;&gt;待我处理 · ${ts.length} 项&lt;/div&gt;&lt;h2&gt;${t.title}&lt;/h2&gt;&lt;p class=&quot;hy-sub&quot;&gt;${t.text}&lt;/p&gt;${btn(t.label,&#x27;item&#x27;,`data-item=&quot;${t.item}&quot; data-arg=&quot;${t.arg}&quot;`)}${ts.slice(1).map(t=&gt;entry(t.label,t.text,t.item,t.arg)).join(&#x27;&#x27;)}&lt;/section&gt;`;}
+  else{const msg=p.mode===&#x27;revising&#x27;?&#x27;修改意见已提交&#x27;:p.mode===&#x27;checking&#x27;?&#x27;款项正在核对&#x27;:p.mode===&#x27;complete&#x27;?&#x27;全项目服务已完成&#x27;:&#x27;设计工作正在进行&#x27;;html+=`&lt;section class=&quot;hy-box hy-task&quot;&gt;&lt;h2&gt;${msg}&lt;/h2&gt;&lt;p class=&quot;hy-sub&quot;&gt;${p.mode===&#x27;revising&#x27;?&#x27;负责人会确认修改范围和预计回复时间，旧版本仍可查阅。&#x27;:p.mode===&#x27;checking&#x27;?&#x27;您已通知付款，到账金额与下载权限将在平台核实后更新。&#x27;:p.mode===&#x27;complete&#x27;?&#x27;可继续查看全部成果、历史确认和款项记录。&#x27;:&#x27;当前没有需要您处理的事项，交付后会在这里提醒。&#x27;}&lt;/p&gt;${btn(p.mode===&#x27;revising&#x27;?&#x27;查看修改记录&#x27;:p.mode===&#x27;checking&#x27;?&#x27;查看核对进度&#x27;:&#x27;查看成果&#x27;,&#x27;item&#x27;,`data-item=&quot;${p.mode===&#x27;checking&#x27;?&#x27;payment&#x27;:&#x27;result&#x27;}&quot; data-arg=&quot;${p.mode===&#x27;checking&#x27;?p.remit:&#x27;latest&#x27;}&quot;`,&#x27;hy-secondary&#x27;)}&lt;/section&gt;`;}
+  if(pre(p))html+=`&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;合作进展&lt;/h3&gt;&lt;ol class=&quot;hy-progress&quot;&gt;&lt;li&gt;需求沟通与团队确认 &lt;span class=&quot;hy-tag&quot;&gt;已完成&lt;/span&gt;&lt;/li&gt;&lt;li&gt;免费设计服务思路 &lt;span class=&quot;hy-tag&quot;&gt;已交付&lt;/span&gt;&lt;/li&gt;&lt;li class=&quot;is-current&quot;&gt;${p.mode===&#x27;quote&#x27;?&#x27;服务方案与报价 · 待确认&#x27;:&#x27;全阶段服务合同 · 待签署&#x27;}&lt;/li&gt;&lt;/ol&gt;&lt;/section&gt;`;
+  else html+=`&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;全项目进度&lt;/h3&gt;&lt;ol class=&quot;hy-progress&quot;&gt;${phases.map((n,i)=&gt;`&lt;li class=&quot;${i===p.stage?&#x27;is-current&#x27;:&#x27;&#x27;}&quot;&gt;&lt;div class=&quot;hy-row&quot;&gt;&lt;span&gt;${n}&lt;/span&gt;&lt;span class=&quot;hy-sub&quot;&gt;${p.mode===&#x27;complete&#x27;||i&lt;p.stage?&#x27;已完成&#x27;:i===p.stage?status(p):&#x27;待开始&#x27;}&lt;/span&gt;&lt;/div&gt;${i===p.stage?`&lt;div class=&quot;hy-sub&quot;&gt;${p.mode===&#x27;review&#x27;?&#x27;最新成果 V&#x27;+p.version+&#x27; · 等待客户反馈&#x27;:p.mode===&#x27;pay&#x27;?&#x27;成果已确认 · 等待节点款&#x27;:&#x27;按约定条件推进&#x27;}&lt;/div&gt;`:&#x27;&#x27;}${i===3?`&lt;div class=&quot;hy-sub&quot;&gt;计划交付 ${plannedDate(p)}&lt;/div&gt;`:&#x27;&#x27;}&lt;/li&gt;`).join(&#x27;&#x27;)}&lt;/ol&gt;&lt;/section&gt;`;
+  return html+`&lt;section class=&quot;hy-box&quot;&gt;${entry(&#x27;项目信息与原始需求&#x27;,`${p.region} · ${p.area}㎡`,&#x27;info&#x27;)}${entry(&#x27;服务团队与联系负责人&#x27;,p.contact+&#x27; · 项目负责人&#x27;,&#x27;team&#x27;)}${entry(&#x27;改期与服务记录&#x27;,p.schedule===&#x27;pending&#x27;?&#x27;有一项改期待确认&#x27;:&#x27;查看已发生的服务调整&#x27;,&#x27;schedule&#x27;)}&lt;/section&gt;`;
+ }
+ function results(p){if(pre(p)||p.mode===&#x27;firstpay&#x27;)return `&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;售前资料&lt;/h3&gt;${entry(&#x27;设计服务思路&#x27;,&#x27;免费文件 · 已交付&#x27;,&#x27;thought&#x27;)}&lt;/section&gt;&lt;div class=&quot;hy-empty&quot;&gt;正式阶段成果将在交付后显示。&lt;/div&gt;`;
+  return `&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-row&quot;&gt;&lt;h3&gt;${p.mode===&#x27;complete&#x27;?&#x27;最终设计成果&#x27;:&#x27;方案设计&#x27;}&lt;/h3&gt;&lt;span class=&quot;hy-tag&quot;&gt;${[&#x27;review&#x27;,&#x27;revising&#x27;].includes(p.mode)?status(p):&#x27;已确认&#x27;}&lt;/span&gt;&lt;/div&gt;${entry(&#x27;方案设计成果 V&#x27;+p.version,&#x27;最新版本 · &#x27;+(p.paid[1]?&#x27;可下载原文件&#x27;:&#x27;可查看评审版&#x27;),&#x27;result&#x27;,&#x27;latest&#x27;)}${entry(&#x27;历史版本与修改记录&#x27;,&#x27;保留已发布版本及客户意见&#x27;,&#x27;history&#x27;)}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;其他阶段&lt;/h3&gt;${entry(&#x27;概念设计成果 V1&#x27;,&#x27;已确认 · 可下载原文件&#x27;,&#x27;concept&#x27;)}${p.mode===&#x27;complete&#x27;?entry(&#x27;施工图与验收资料&#x27;,&#x27;已归档 · 可下载原文件&#x27;,&#x27;final&#x27;):entry(&#x27;施工图设计&#x27;,&#x27;尚未交付，查看计划&#x27;,&#x27;stage&#x27;)}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;${entry(&#x27;售前设计服务思路&#x27;,&#x27;与正式成果分开归档&#x27;,&#x27;thought&#x27;)}&lt;/section&gt;`;
+ }
+ function paymentStatus(p,i){return p.paid[i]?&#x27;已到账&#x27;:p.mode===&#x27;checking&#x27;&amp;&amp;p.remit===i?&#x27;核对中&#x27;:due(p)===i?&#x27;待付款&#x27;:pre(p)?&#x27;签约后生效&#x27;:&#x27;未到期&#x27;;}
+ function commerce(p){const names=[&#x27;首款&#x27;,&#x27;方案节点款&#x27;,&#x27;施工图节点款&#x27;,&#x27;尾款&#x27;];return `&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-sub&quot;&gt;${pre(p)?&#x27;全项目报价&#x27;:&#x27;全项目合同总价&#x27;}&lt;/div&gt;&lt;div class=&quot;hy-amount&quot;&gt;${money(total(p))}&lt;/div&gt;${!pre(p)?`&lt;div class=&quot;hy-row&quot;&gt;&lt;span&gt;已到账 ${money(paid(p))}&lt;/span&gt;&lt;span class=&quot;hy-sub&quot;&gt;未收 ${money(total(p)-paid(p))}&lt;/span&gt;&lt;/div&gt;`:&#x27;&lt;p class=&quot;hy-sub&quot;&gt;报价确认后签订全阶段服务合同。&lt;/p&gt;&#x27;}${entry(&#x27;服务方案与报价&#x27;,p.mode===&#x27;quote&#x27;?&#x27;待您确认&#x27;:&#x27;已确认的服务范围与报价&#x27;,&#x27;quote&#x27;)}${entry(&#x27;全阶段服务合同&#x27;,p.mode===&#x27;quote&#x27;?&#x27;确认报价后进入签约&#x27;:p.mode===&#x27;sign&#x27;?&#x27;待签署&#x27;:&#x27;双方已签署&#x27;,&#x27;contract&#x27;)}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;分阶段付款计划&lt;/h3&gt;${names.map((n,i)=&gt;entry(n+&#x27; · &#x27;+money(parts(p)[i]),paymentStatus(p,i),&#x27;payment&#x27;,String(i))).join(&#x27;&#x27;)}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;${entry(&#x27;增补与范围变更&#x27;,p.addendum===&#x27;pending&#x27;?&#x27;新增会议室设计 · 待确认&#x27;:p.addendum===&#x27;accepted&#x27;?&#x27;新增会议室设计 · 已确认&#x27;:p.addendum===&#x27;declined&#x27;?&#x27;有一份未接受的增补&#x27;:&#x27;暂无增补&#x27;,&#x27;addendum&#x27;)}${entry(&#x27;开票与其他服务问题&#x27;,&#x27;联系负责人，由平台人工处理&#x27;,&#x27;feedback&#x27;,&#x27;开票申请&#x27;)}&lt;/section&gt;`;}
+ function detailPage(p){const tab=[&#x27;overview&#x27;,&#x27;results&#x27;,&#x27;commerce&#x27;].includes(s.route.tab)?s.route.tab:&#x27;overview&#x27;;return header(p.name,`${p.area}㎡ · ${pre(p)?&#x27;售前沟通&#x27;:&#x27;全阶段设计服务&#x27;} · ${status(p)}`)+`&lt;nav class=&quot;hy-tabs&quot; role=&quot;tablist&quot; aria-label=&quot;项目内容&quot;&gt;${[[&#x27;overview&#x27;,&#x27;概览&#x27;],[&#x27;results&#x27;,&#x27;成果&#x27;],[&#x27;commerce&#x27;,&#x27;合同与款项&#x27;]].map(([k,n])=&gt;`&lt;button id=&quot;hy-tab-${k}&quot; type=&quot;button&quot; role=&quot;tab&quot; aria-controls=&quot;hy-panel&quot; aria-selected=&quot;${tab===k}&quot; data-action=&quot;tab&quot; data-tab=&quot;${k}&quot;&gt;${n}&lt;/button&gt;`).join(&#x27;&#x27;)}&lt;/nav&gt;&lt;main id=&quot;hy-panel&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;hy-tab-${tab}&quot; class=&quot;hy-body&quot;&gt;${tab===&#x27;overview&#x27;?overview(p):tab===&#x27;results&#x27;?results(p):commerce(p)}&lt;/main&gt;`;}
+ function quote(p){return `&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-kicker&quot;&gt;办公空间全阶段设计 · 示例方案&lt;/div&gt;&lt;div class=&quot;hy-amount&quot;&gt;${money(p.base)}&lt;/div&gt;&lt;p class=&quot;hy-sub&quot;&gt;一次签约覆盖全部约定服务，按合同节点付款。&lt;/p&gt;${data([[&#x27;设计面积&#x27;,p.area+&#x27;㎡&#x27;],[&#x27;服务阶段&#x27;,&#x27;策划、概念、方案、施工图、现场配合及验收结算&#x27;],[&#x27;预计周期&#x27;,&#x27;设计阶段约 45 个工作日；现场配合按施工计划安排&#x27;],[&#x27;修改范围&#x27;,&#x27;各阶段含 2 轮约定范围内的集中修改（示例）&#x27;]])}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;阶段成果&lt;/h3&gt;&lt;ul class=&quot;hy-list&quot;&gt;&lt;li&gt;策划与概念：需求梳理、布局方向、风格意向&lt;/li&gt;&lt;li&gt;方案设计：布局方案、效果表达、材料意向&lt;/li&gt;&lt;li&gt;施工图：约定专业的施工图纸与交底资料&lt;/li&gt;&lt;li&gt;现场及验收：约定次数的配合记录、成果交接&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;付款约定&lt;/h3&gt;${data([[&#x27;首款&#x27;,money(p.base*.3)+&#x27; · 双方签约后&#x27;],[&#x27;方案节点&#x27;,money(p.base*.3)+&#x27; · 方案成果确认后&#x27;],[&#x27;施工图节点&#x27;,money(p.base*.3)+&#x27; · 施工图成果确认后&#x27;],[&#x27;尾款&#x27;,money(p.base*.1)+&#x27; · 约定验收完成后&#x27;]])}&lt;div class=&quot;hy-sub&quot;&gt;比例、周期和修改次数均为原型示例，待业务方确定。&lt;/div&gt;&lt;/section&gt;${p.mode===&#x27;quote&#x27;?`&lt;div class=&quot;hy-actions&quot;&gt;${btn(&#x27;有疑问&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;feedback&quot; data-arg=&quot;报价问题&quot;&#x27;,&#x27;hy-secondary&#x27;)}${btn(&#x27;确认方案与报价&#x27;,&#x27;confirm&#x27;,&#x27;data-kind=&quot;quote&quot;&#x27;)}&lt;/div&gt;`:p.mode===&#x27;sign&#x27;?btn(&#x27;查看待签合同&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;contract&quot;&#x27;):&#x27;&lt;p class=&quot;hy-sub&quot;&gt;已确认的方案保留在本项目中。&lt;/p&gt;&#x27;}`;}
+ function contract(p){return `&lt;section class=&quot;hy-box&quot;&gt;&lt;span class=&quot;hy-tag&quot;&gt;${p.mode===&#x27;quote&#x27;?&#x27;待生成&#x27;:p.mode===&#x27;sign&#x27;?&#x27;待签署&#x27;:&#x27;双方已签署 · 演示&#x27;}&lt;/span&gt;&lt;h2&gt;办公空间设计服务合同&lt;/h2&gt;${data([[&#x27;项目&#x27;,p.name],[&#x27;合同范围&#x27;,&#x27;全阶段设计服务&#x27;],[&#x27;合同总价&#x27;,money(p.base)],[&#x27;付款方式&#x27;,&#x27;分阶段付款&#x27;],[&#x27;签约状态&#x27;,pre(p)?&#x27;尚未完成双方签署&#x27;:&#x27;客户与公司均已完成签署（示例）&#x27;]])}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;合同内容摘要&lt;/h3&gt;&lt;p&gt;服务范围、阶段成果与确认标准、服务周期、付款节点、修改与增补、暂停及终止处理。&lt;/p&gt;&lt;p class=&quot;hy-sub&quot;&gt;实际合同文本与签署方式由业务方另行确定，本页仅演示结构。&lt;/p&gt;${entry(&#x27;查看关联服务方案&#x27;,&#x27;完整范围、阶段成果与报价&#x27;,&#x27;quote&#x27;)}&lt;/section&gt;${p.mode===&#x27;quote&#x27;?btn(&#x27;先确认服务方案&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;quote&quot;&#x27;):p.mode===&#x27;sign&#x27;?`&lt;label class=&quot;hy-check&quot;&gt;&lt;input id=&quot;hy-contract-check&quot; type=&quot;checkbox&quot;&gt;&lt;span&gt;已查看本次全阶段服务范围、总价及付款计划。&lt;/span&gt;&lt;/label&gt;&lt;div id=&quot;hy-form-error&quot; class=&quot;hy-error&quot; role=&quot;alert&quot;&gt;&lt;/div&gt;${btn(&#x27;演示完成双方签署&#x27;,&#x27;sign&#x27;)}`:btn(&#x27;查看合同归档&#x27;,&#x27;notice&#x27;,&#x27;data-message=&quot;合同已归档。本原型不包含真实合同文件。&quot;&#x27;,&#x27;hy-secondary&#x27;)}`;}
+ function result(p,old=false){const v=old?1:p.version,allowed=p.paid[1]||p.mode===&#x27;complete&#x27;;return `&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-row&quot;&gt;&lt;h2&gt;方案设计成果 V${v}&lt;/h2&gt;&lt;span class=&quot;hy-tag&quot;&gt;${old?&#x27;历史版本&#x27;:[&#x27;review&#x27;,&#x27;revising&#x27;].includes(p.mode)?status(p):&#x27;已确认&#x27;}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;hy-sub&quot;&gt;方案设计 · 已审核发布 · ${allowed?&#x27;原文件可下载&#x27;:&#x27;评审版可查看&#x27;}&lt;/div&gt;&lt;div class=&quot;hy-preview&quot;&gt;&lt;div class=&quot;hy-kicker&quot;&gt;布局方案 · 演示缩略图&lt;/div&gt;&lt;div class=&quot;hy-plan&quot; aria-label=&quot;办公室布局示意，非实际设计成果&quot;&gt;&lt;span&gt;会议区&lt;/span&gt;&lt;span class=&quot;hy-open&quot;&gt;开放办公区&lt;/span&gt;&lt;span&gt;经理室&lt;/span&gt;&lt;span&gt;接待区&lt;/span&gt;&lt;span&gt;茶水区&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;hy-sub&quot;&gt;布局与动线、设计效果、材料意向&lt;/div&gt;&lt;/div&gt;${entry(&#x27;打开评审内容&#x27;,&#x27;查看本次成果清单与评审要点&#x27;,&#x27;preview&#x27;,old?&#x27;old&#x27;:&#x27;latest&#x27;)}&lt;/section&gt;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;本次修改说明&lt;/h3&gt;&lt;p&gt;${old?&#x27;首版方案，已由后续版本更新。&#x27;:&#x27;依据上一轮沟通调整会议区位置，并补充材料意向。&#x27;}&lt;/p&gt;${p.comment&amp;&amp;!old?`&lt;div class=&quot;hy-note&quot;&gt;已提交意见：${esc(p.comment)}&lt;/div&gt;`:&#x27;&#x27;}&lt;div class=&quot;hy-sub&quot;&gt;确认与修改意见均关联具体版本。历史版本保留，不直接覆盖。&lt;/div&gt;&lt;/section&gt;${old?&#x27;&lt;div class=&quot;hy-note&quot;&gt;历史版本仅供查看，确认操作请进入最新版本。&lt;/div&gt;&#x27;:p.mode===&#x27;review&#x27;?`&lt;div class=&quot;hy-note&quot;&gt;本示例中，确认后将产生方案节点应付款 ${money(parts(p)[1])}。&lt;/div&gt;&lt;div class=&quot;hy-actions&quot;&gt;${btn(&#x27;提出修改意见&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;revision&quot;&#x27;,&#x27;hy-secondary&#x27;)}${btn(&#x27;确认本阶段成果&#x27;,&#x27;confirm&#x27;,&#x27;data-kind=&quot;result&quot;&#x27;)}&lt;/div&gt;`:p.mode===&#x27;revising&#x27;?btn(&#x27;查看已提交意见&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;revision&quot;&#x27;,&#x27;hy-secondary&#x27;):allowed?btn(&#x27;下载原文件&#x27;,&#x27;download&#x27;):btn(p.mode===&#x27;checking&#x27;?&#x27;查看款项核对进度&#x27;:&#x27;查看对应款项&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;payment&quot; data-arg=&quot;1&quot;&#x27;)}`;}
+ function payment(p,i){const ns=[&#x27;首款&#x27;,&#x27;方案节点款&#x27;,&#x27;施工图节点款&#x27;,&#x27;尾款&#x27;],amount=parts(p)[i],st=paymentStatus(p,i);let action=&#x27;&#x27;;
+  if(st===&#x27;待付款&#x27;)action=`&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;付款与核对&lt;/h3&gt;&lt;p&gt;根据合同约定办理付款，并通过项目负责人获取收款信息。&lt;/p&gt;&lt;div class=&quot;hy-note&quot;&gt;此为演示，无真实收款码或银行账号。&lt;/div&gt;${btn(&#x27;我已付款，通知核对&#x27;,&#x27;confirm&#x27;,`data-kind=&quot;remit&quot; data-index=&quot;${i}&quot;`)}&lt;/section&gt;`;
+  else if(st===&#x27;核对中&#x27;)action=&#x27;&lt;div class=&quot;hy-note&quot;&gt;已通知平台核对，当前尚未登记到账。不会提前解锁文件或启动下一阶段。&lt;/div&gt;&#x27;;
+  else if(st===&#x27;已到账&#x27;)action=btn(&#x27;查看对应成果&#x27;,&#x27;item&#x27;,`data-item=&quot;${i===0?&#x27;concept&#x27;:i===1?&#x27;result&#x27;:&#x27;final&#x27;}&quot; data-arg=&quot;latest&quot;`,&#x27;hy-secondary&#x27;);
+  else action=&#x27;&lt;p class=&quot;hy-sub&quot;&gt;尚未满足付款条件，当前无需支付。&lt;/p&gt;&#x27;;
+  return `&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-row&quot;&gt;&lt;h3&gt;${ns[i]}&lt;/h3&gt;&lt;span class=&quot;hy-tag&quot;&gt;${st}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;hy-amount&quot;&gt;${money(amount)}&lt;/div&gt;${data([[&#x27;所属合同&#x27;,p.name+&#x27;全阶段服务合同&#x27;],[&#x27;付款条件&#x27;,[&#x27;双方签约后&#x27;,&#x27;方案成果确认后&#x27;,&#x27;施工图成果确认后&#x27;,&#x27;约定验收完成后&#x27;][i]],[&#x27;到期时间&#x27;,st===&#x27;待付款&#x27;||st===&#x27;核对中&#x27;?&#x27;2026年10月28日（示例）&#x27;:st===&#x27;已到账&#x27;?&#x27;已按约完成&#x27;:&#x27;条件满足后生成&#x27;],[&#x27;到账情况&#x27;,p.paid[i]?&#x27;已核实到账&#x27;:&#x27;尚未核实到账&#x27;]])}&lt;/section&gt;${action}&lt;section class=&quot;hy-box&quot;&gt;${entry(&#x27;开票或付款问题&#x27;,&#x27;联系项目负责人&#x27;,&#x27;feedback&#x27;,&#x27;付款与开票&#x27;)}${entry(&#x27;查看完整付款计划&#x27;,&#x27;合同总价、已到账与其余节点&#x27;,&#x27;payments&#x27;)}&lt;/section&gt;`;}
+ function schedule(p){return p.schedule===&#x27;none&#x27;?&#x27;&lt;div class=&quot;hy-box&quot;&gt;&lt;h3&gt;暂无改期记录&lt;/h3&gt;&lt;p class=&quot;hy-sub&quot;&gt;有日期调整时，会展示原日期、新日期、原因及确认记录。&lt;/p&gt;&lt;/div&gt;&#x27;:`&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-row&quot;&gt;&lt;h2&gt;施工图交付日期调整&lt;/h2&gt;&lt;span class=&quot;hy-tag&quot;&gt;${p.schedule===&#x27;pending&#x27;?&#x27;待确认&#x27;:p.schedule===&#x27;accepted&#x27;?&#x27;已同意&#x27;:&#x27;待进一步沟通&#x27;}&lt;/span&gt;&lt;/div&gt;${data([[&#x27;原日期&#x27;,&#x27;2026年11月20日&#x27;],[&#x27;新日期&#x27;,&#x27;2026年11月23日&#x27;],[&#x27;提出原因&#x27;,&#x27;根据补充的现场条件，需增加协调时间（示例）&#x27;],[&#x27;费用影响&#x27;,&#x27;不增加费用&#x27;],[&#x27;范围影响&#x27;,&#x27;服务范围保持不变&#x27;]])}&lt;p class=&quot;hy-sub&quot;&gt;确认后更新预计交付日，并保留原日期及本次记录。&lt;/p&gt;&lt;/section&gt;${p.schedule===&#x27;pending&#x27;?`&lt;div class=&quot;hy-actions&quot;&gt;${btn(&#x27;不同意，需沟通&#x27;,&#x27;confirm&#x27;,&#x27;data-kind=&quot;scheduleNo&quot;&#x27;,&#x27;hy-secondary&#x27;)}${btn(&#x27;同意改期&#x27;,&#x27;confirm&#x27;,&#x27;data-kind=&quot;scheduleYes&quot;&#x27;)}&lt;/div&gt;`:&#x27;&#x27;}`;}
+ function addendum(p){return p.addendum===&#x27;none&#x27;?&#x27;&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;暂无增补&lt;/h3&gt;&lt;p class=&quot;hy-sub&quot;&gt;原合同范围外的新增服务，在确认范围、费用和工期影响后执行。&lt;/p&gt;&lt;/section&gt;&#x27;:`&lt;section class=&quot;hy-box&quot;&gt;&lt;span class=&quot;hy-tag&quot;&gt;${p.addendum===&#x27;pending&#x27;?&#x27;待您确认&#x27;:p.addendum===&#x27;accepted&#x27;?&#x27;已确认&#x27;:&#x27;未接受，按原合同履行&#x27;}&lt;/span&gt;&lt;h2&gt;新增独立会议室设计&lt;/h2&gt;${data([[&#x27;新增内容&#x27;,&#x27;新增一间会议室的方案及施工图&#x27;],[&#x27;新增费用&#x27;,&#x27;¥6,000&#x27;],[&#x27;付款安排&#x27;,&#x27;并入施工图节点款，不增加当前方案节点应付&#x27;],[&#x27;工期影响&#x27;,&#x27;施工图交付延后 3 个工作日：11月20日 → 11月25日（示例）&#x27;],[&#x27;调整后总价&#x27;,money(p.base+6000)]])}&lt;/section&gt;${p.addendum===&#x27;pending&#x27;?`&lt;div class=&quot;hy-actions&quot;&gt;${btn(&#x27;暂不接受&#x27;,&#x27;confirm&#x27;,&#x27;data-kind=&quot;addendumNo&quot;&#x27;,&#x27;hy-secondary&#x27;)}${btn(&#x27;确认增补&#x27;,&#x27;confirm&#x27;,&#x27;data-kind=&quot;addendumYes&quot;&#x27;)}&lt;/div&gt;`:&#x27;&#x27;}`;}
+ function formPage(p,revision){const title=revision?&#x27;提交修改意见&#x27;:&#x27;联系项目负责人&#x27;,value=revision?(p.revisionDraft??p.comment):(p.feedbackDraft||&#x27;&#x27;);return `&lt;section class=&quot;hy-box&quot;&gt;&lt;h2&gt;${title}&lt;/h2&gt;&lt;div class=&quot;hy-sub&quot;&gt;${revision?&#x27;关联：方案设计成果 V&#x27;+p.version:&#x27;负责人：&#x27;+p.contact+&#x27; · 本项目专属跟进&#x27;}&lt;/div&gt;${revision?&#x27;&#x27;:`&lt;label for=&quot;hy-topic&quot;&gt;问题类型&lt;/label&gt;&lt;select id=&quot;hy-topic&quot;&gt;${[&#x27;服务咨询&#x27;,&#x27;报价问题&#x27;,&#x27;付款与开票&#x27;,&#x27;改期或增补&#x27;,&#x27;换团队或解约&#x27;].map(v=&gt;`&lt;option ${s.route.arg&amp;&amp;v.includes(s.route.arg.slice(0,2))?&#x27;selected&#x27;:&#x27;&#x27;}&gt;${v}&lt;/option&gt;`).join(&#x27;&#x27;)}&lt;/select&gt;`}&lt;label for=&quot;hy-message&quot;&gt;${revision?&#x27;请集中说明希望调整的内容&#x27;:&#x27;请说明需要协助的事项&#x27;}&lt;/label&gt;&lt;textarea id=&quot;hy-message&quot; maxlength=&quot;1000&quot; placeholder=&quot;例如：希望调整会议室布局，请先确认是否影响交付时间。&quot;&gt;${esc(value)}&lt;/textarea&gt;&lt;div id=&quot;hy-form-error&quot; class=&quot;hy-error&quot; role=&quot;alert&quot;&gt;&lt;/div&gt;&lt;p class=&quot;hy-sub&quot;&gt;${revision?&#x27;负责人会先核对修改范围；涉及新增费用时，另行提交增补确认。&#x27;:&#x27;请求会关联到本项目，由负责人跟进。&#x27;}&lt;/p&gt;${btn(revision?&#x27;提交修改意见&#x27;:&#x27;提交给负责人&#x27;,revision?&#x27;submitRevision&#x27;:&#x27;submitFeedback&#x27;)}${!revision&amp;&amp;p.request?`&lt;hr class=&quot;hy-line&quot;&gt;&lt;h3&gt;最近提交的请求&lt;/h3&gt;&lt;div class=&quot;hy-sub&quot;&gt;${esc(p.request.topic)} · 待负责人处理&lt;/div&gt;&lt;p&gt;${esc(p.request.text)}&lt;/p&gt;`:&#x27;&#x27;}&lt;/section&gt;`;}
+ function itemPage(p){const k=s.route.item,a=s.route.arg;let title=&#x27;&#x27;,content=&#x27;&#x27;;
+  if(k===&#x27;quote&#x27;){title=&#x27;服务方案与报价&#x27;;content=quote(p);}
+  else if(k===&#x27;contract&#x27;){title=&#x27;全阶段服务合同&#x27;;content=contract(p);}
+  else if(k===&#x27;result&#x27;){title=&#x27;成果详情&#x27;;content=result(p,a===&#x27;old&#x27;);}
+  else if(k===&#x27;history&#x27;){title=&#x27;历史版本&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;${entry(&#x27;方案设计 V&#x27;+p.version,&#x27;当前版本 · &#x27;+status(p),&#x27;result&#x27;,&#x27;latest&#x27;)}${entry(&#x27;方案设计 V1&#x27;,&#x27;历史版本 · 修改记录保留&#x27;,&#x27;result&#x27;,&#x27;old&#x27;)}&lt;/section&gt;${p.comment?`&lt;section class=&quot;hy-box&quot;&gt;&lt;h3&gt;客户修改意见&lt;/h3&gt;&lt;p&gt;${esc(p.comment)}&lt;/p&gt;&lt;div class=&quot;hy-sub&quot;&gt;关联 V${p.version} · 已提交，等待负责人处理&lt;/div&gt;&lt;/section&gt;`:&#x27;&#x27;}`;}
+  else if(k===&#x27;revision&#x27;){title=&#x27;修改意见&#x27;;content=formPage(p,true);}
+  else if(k===&#x27;payment&#x27;){title=&#x27;付款详情&#x27;;content=payment(p,Math.max(0,Math.min(3,Number(a)||0)));}
+  else if(k===&#x27;payments&#x27;){title=&#x27;合同与付款计划&#x27;;content=commerce(p);}
+  else if(k===&#x27;schedule&#x27;){title=&#x27;改期详情&#x27;;content=schedule(p);}
+  else if(k===&#x27;addendum&#x27;){title=&#x27;增补详情&#x27;;content=addendum(p);}
+  else if(k===&#x27;feedback&#x27;){title=&#x27;联系负责人&#x27;;content=formPage(p,false);}
+  else if(k===&#x27;info&#x27;){title=&#x27;项目信息&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;${data([[&#x27;项目名称&#x27;,p.name],[&#x27;空间类型&#x27;,&#x27;办公空间&#x27;],[&#x27;设计面积&#x27;,p.area+&#x27;㎡&#x27;],[&#x27;项目位置&#x27;,p.address],[&#x27;核心需求&#x27;,&#x27;优化办公动线，兼顾协作空间与独立会议需求。&#x27;],[&#x27;合同范围&#x27;,&#x27;全阶段设计服务；具体内容见合同&#x27;]])}&lt;/section&gt;${btn(&#x27;需求有变化，联系负责人&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;feedback&quot;&#x27;,&#x27;hy-secondary&#x27;)}`;}
+  else if(k===&#x27;team&#x27;){title=&#x27;服务团队&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;&lt;h2&gt;禾一办公设计团队&lt;/h2&gt;&lt;p class=&quot;hy-sub&quot;&gt;当前项目团队 · 示例成员&lt;/p&gt;${data([[&#x27;项目负责人&#x27;,p.contact],[&#x27;方案设计&#x27;,&#x27;苏设计师&#x27;],[&#x27;施工图设计&#x27;,&#x27;张设计师&#x27;],[&#x27;服务方式&#x27;,&#x27;项目群沟通，成果与确认统一留在项目内&#x27;]])}&lt;/section&gt;${btn(&#x27;联系项目负责人&#x27;,&#x27;item&#x27;,&#x27;data-item=&quot;feedback&quot;&#x27;)}&lt;div class=&quot;hy-note&quot;&gt;本原型不连接真实企微群或电话号码。&lt;/div&gt;`;}
+  else if(k===&#x27;stage&#x27;){title=&#x27;施工图阶段&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;&lt;h2&gt;施工图设计&lt;/h2&gt;${data([[&#x27;当前状态&#x27;,&#x27;待启动&#x27;],[&#x27;计划交付&#x27;,plannedDate(p)],[&#x27;启动条件&#x27;,&#x27;上阶段成果确认及对应节点款到账，资料齐备&#x27;],[&#x27;预计成果&#x27;,&#x27;约定专业施工图及交底资料&#x27;]])}&lt;/section&gt;`;}
+  else if(k===&#x27;thought&#x27;){title=&#x27;设计服务思路&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;&lt;span class=&quot;hy-tag&quot;&gt;免费售前文件&lt;/span&gt;&lt;h2&gt;办公空间设计服务思路&lt;/h2&gt;&lt;ul class=&quot;hy-list&quot;&gt;&lt;li&gt;先确认团队规模、协作方式及空间使用需求。&lt;/li&gt;&lt;li&gt;重点讨论访客接待、会议与办公动线。&lt;/li&gt;&lt;li&gt;明确设计范围与现场条件后形成正式报价。&lt;/li&gt;&lt;/ul&gt;&lt;p class=&quot;hy-sub&quot;&gt;示例内容；免费思路不替代正式阶段设计成果。&lt;/p&gt;&lt;/section&gt;`;}
+  else if(k===&#x27;preview&#x27;){title=&#x27;成果评审内容&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;&lt;div class=&quot;hy-kicker&quot;&gt;方案设计 V${a===&#x27;old&#x27;?1:p.version} · 示例评审页&lt;/div&gt;&lt;h2&gt;本次交付内容&lt;/h2&gt;&lt;ul class=&quot;hy-list&quot;&gt;&lt;li&gt;平面布局：功能分区与主要动线&lt;/li&gt;&lt;li&gt;设计效果：公共区域与重点空间&lt;/li&gt;&lt;li&gt;材料意向：主要空间的色彩与材质&lt;/li&gt;&lt;/ul&gt;&lt;div class=&quot;hy-preview&quot;&gt;&lt;h3&gt;评审关注点&lt;/h3&gt;&lt;p&gt;布局是否满足使用需求，重点空间的设计方向是否符合预期，是否存在遗漏的使用场景。&lt;/p&gt;&lt;/div&gt;&lt;p class=&quot;hy-sub&quot;&gt;真实产品应提供足够清晰、完整的评审文件。本页只演示阅读与确认的组织方式。&lt;/p&gt;&lt;/section&gt;${a===&#x27;old&#x27;?&#x27;&#x27;:btn(&#x27;返回成果详情&#x27;,&#x27;back&#x27;,&#x27;&#x27;,&#x27;hy-secondary&#x27;)}`;}
+  else if(k===&#x27;concept&#x27;||k===&#x27;final&#x27;){title=k===&#x27;concept&#x27;?&#x27;概念设计成果&#x27;:&#x27;最终成果归档&#x27;;content=`&lt;section class=&quot;hy-box&quot;&gt;&lt;span class=&quot;hy-tag&quot;&gt;已确认 · 已交付&lt;/span&gt;&lt;h2&gt;${title}&lt;/h2&gt;${data([[&#x27;文件类型&#x27;,k===&#x27;concept&#x27;?&#x27;概念方向与布局说明&#x27;:&#x27;施工图、现场记录及验收资料&#x27;],[&#x27;当前权限&#x27;,&#x27;可下载原文件&#x27;],[&#x27;关联项目&#x27;,p.name]])}&lt;/section&gt;${btn(&#x27;下载原文件&#x27;,&#x27;download&#x27;)}`;}
+  else{title=&#x27;项目记录&#x27;;content=&#x27;&lt;div class=&quot;hy-empty&quot;&gt;暂无记录。&lt;/div&gt;&#x27;;}
+  return header(title,p.name,&#x27;具体事项&#x27;)+`&lt;main class=&quot;hy-body&quot;&gt;${content}&lt;/main&gt;`;
+ }
+ function render(){screen.innerHTML=(s.notice?`&lt;div class=&quot;hy-toast&quot; role=&quot;status&quot;&gt;${esc(s.notice)}&lt;/div&gt;`:&#x27;&#x27;)+(s.route.page===&#x27;list&#x27;?listPage():s.route.page===&#x27;detail&#x27;?detailPage(project()):itemPage(project()));}
+ function modal(title,text,kind,label=&#x27;确认&#x27;,extra={}){pending={kind,...extra};root.querySelector(&#x27;#hy-dialog-title&#x27;).textContent=title;root.querySelector(&#x27;#hy-dialog-content&#x27;).innerHTML=`&lt;p&gt;${text}&lt;/p&gt;`;const b=root.querySelector(&#x27;#hy-dialog-confirm&#x27;);b.textContent=label;b.hidden=kind===&#x27;notice&#x27;;dialog.showModal();}
+ function confirm(kind,index){const p=project();const configs={quote:[&#x27;确认服务方案与报价&#x27;,&#x27;确认的是全项目服务范围与报价，下一步签署全阶段服务合同。&#x27;,&#x27;确认并进入签约&#x27;],result:[&#x27;确认本阶段成果&#x27;,`本次确认关联方案设计 V${p.version}。确认后，本示例生成方案节点应付款 ${money(parts(p)[1])}。如仍有修改意见，请返回提交。`,&#x27;确认成果&#x27;],remit:[&#x27;通知平台核对款项&#x27;,&#x27;此操作仅表示您已办理付款；到账状态、文件权限及下一阶段启动条件，以平台核对结果为准。&#x27;,&#x27;通知核对&#x27;],scheduleYes:[&#x27;同意交付日期调整&#x27;,&#x27;施工图交付日将从11月20日更新为11月23日，原日期和确认记录会保留。&#x27;,&#x27;同意改期&#x27;],scheduleNo:[&#x27;暂不同意改期&#x27;,&#x27;保留原交付日期，并通知负责人继续沟通。&#x27;,&#x27;提交沟通请求&#x27;],addendumYes:[&#x27;确认新增服务&#x27;,`新增费用 ¥6,000，并入施工图节点款。全项目总价调整为 ${money(p.base+6000)}，当前方案款不变。`,&#x27;确认增补&#x27;],addendumNo:[&#x27;暂不接受新增服务&#x27;,&#x27;不增加费用，继续按原合同范围履行。&#x27;,&#x27;暂不接受&#x27;]};const c=configs[kind];if(c)modal(c[0],c[1],kind,c[2],{index});}
+ function commit(){const p=project(),k=pending?.kind;dialog.close();
+  if(k===&#x27;quote&#x27;){p.mode=&#x27;sign&#x27;;detailAfter(&#x27;方案报价已确认，下一步签署全阶段合同。&#x27;);}
+  else if(k===&#x27;sign&#x27;){p.mode=&#x27;firstpay&#x27;;p.stage=0;detailAfter(&#x27;演示签约已完成，首款待支付。&#x27;);}
+  else if(k===&#x27;result&#x27;){p.mode=&#x27;pay&#x27;;detailAfter(&#x27;方案成果已确认，方案节点款待支付。&#x27;);}
+  else if(k===&#x27;remit&#x27;){p.remit=Number(pending.index);p.mode=&#x27;checking&#x27;;detailAfter(&#x27;已通知平台核对；当前尚未确认到账。&#x27;);}
+  else if(k===&#x27;scheduleYes&#x27;||k===&#x27;scheduleNo&#x27;){p.schedule=k===&#x27;scheduleYes&#x27;?&#x27;accepted&#x27;:&#x27;declined&#x27;;detailAfter(k===&#x27;scheduleYes&#x27;?&#x27;改期已确认，日期与记录已更新。&#x27;:&#x27;已通知负责人沟通，保留原交付日期。&#x27;);}
+  else if(k===&#x27;addendumYes&#x27;||k===&#x27;addendumNo&#x27;){p.addendum=k===&#x27;addendumYes&#x27;?&#x27;accepted&#x27;:&#x27;declined&#x27;;detailAfter(k===&#x27;addendumYes&#x27;?&#x27;增补已确认，款项计划与施工图交付日期已更新。&#x27;:&#x27;已记录暂不接受，继续按原合同服务。&#x27;);}
+  else if(k===&#x27;reset&#x27;){s=fresh();render();persist();}
+  pending=null;
+ }
+ root.addEventListener(&#x27;click&#x27;,e=&gt;{const b=e.target.closest(&#x27;[data-action]&#x27;);if(!b||!root.contains(b))return;const ac=b.dataset.action;
+  if(ac===&#x27;open&#x27;)go({page:&#x27;detail&#x27;,id:b.dataset.id,tab:&#x27;overview&#x27;,item:&#x27;&#x27;,arg:&#x27;&#x27;});
+  else if(ac===&#x27;back&#x27;)back();
+  else if(ac===&#x27;list&#x27;)go(fresh().route);
+  else if(ac===&#x27;filter&#x27;){s.filter=b.dataset.filter;render();persist();}
+  else if(ac===&#x27;tab&#x27;){s.route.tab=b.dataset.tab;render();persist();}
+  else if(ac===&#x27;item&#x27;)go({page:&#x27;item&#x27;,item:b.dataset.item,arg:b.dataset.arg||&#x27;&#x27;});
+  else if(ac===&#x27;confirm&#x27;)confirm(b.dataset.kind,b.dataset.index);
+  else if(ac===&#x27;dismiss&#x27;){dialog.close();pending=null;}
+  else if(ac===&#x27;commit&#x27;)commit();
+  else if(ac===&#x27;sign&#x27;){if(!root.querySelector(&#x27;#hy-contract-check&#x27;)?.checked){root.querySelector(&#x27;#hy-form-error&#x27;).textContent=&#x27;请先查看并勾选服务范围、总价与付款计划。&#x27;;return;}modal(&#x27;演示完成签约&#x27;,&#x27;本原型将展示双方签署完成后的状态，不会签署真实合同。&#x27;,&#x27;sign&#x27;,&#x27;完成签约演示&#x27;);}
+  else if(ac===&#x27;submitRevision&#x27;||ac===&#x27;submitFeedback&#x27;){const msg=root.querySelector(&#x27;#hy-message&#x27;).value.trim();if(!msg){root.querySelector(&#x27;#hy-form-error&#x27;).textContent=&#x27;请填写具体内容，便于负责人处理。&#x27;;return;}if(ac===&#x27;submitRevision&#x27;){project().comment=msg;project().mode=&#x27;revising&#x27;;detailAfter(&#x27;修改意见已提交，已关联当前成果版本。&#x27;);}else{project().request={topic:root.querySelector(&#x27;#hy-topic&#x27;)?.value,text:msg};detailAfter(&#x27;请求已记录，由本项目负责人跟进（演示）。&#x27;);}}
+  else if(ac===&#x27;download&#x27;)modal(&#x27;下载原文件&#x27;,&#x27;已展示下载权限。本原型不包含真实设计文件，不会产生实际下载。&#x27;,&#x27;notice&#x27;);
+  else if(ac===&#x27;notice&#x27;)modal(&#x27;项目记录&#x27;,esc(b.dataset.message),&#x27;notice&#x27;);
+  else if(ac===&#x27;navstub&#x27;)modal(&#x27;本次演示范围&#x27;,&#x27;本次完善项目与订单的三个层级，首页、发布、设置保留栏目位置。&#x27;,&#x27;notice&#x27;);
+  else if(ac===&#x27;reset&#x27;)modal(&#x27;重新体验原型&#x27;,&#x27;将恢复四个示例项目的初始状态，清除本次演示操作。&#x27;,&#x27;reset&#x27;,&#x27;恢复示例&#x27;);
+ });
+ root.addEventListener(&#x27;input&#x27;,e=&gt;{if(e.target.id===&#x27;hy-message&#x27;){project()[s.route.item===&#x27;revision&#x27;?&#x27;revisionDraft&#x27;:&#x27;feedbackDraft&#x27;]=e.target.value;}});
+ render();
+})();
+&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (event) =&gt; {
+    for (const target of event.composedPath()) {
+      if (target?.nodeType === Node.ELEMENT_NODE) {
+        const trigger = target.closest(&quot;[data-tooltip]&quot;);
+        if (trigger) return trigger;
+      }
+    }
+    return null;
+  };
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handlers = {
+    pointerover: handlePointerOpen,
+    pointerdown: handlePointer,
+    pointercancel: handlePointer,
+    click: handleTouchClick,
+    pointerout: handleLeave,
+    focusin: handleFocusIn,
+    focusout: handleLeave,
+    keydown: handleKeyDown,
+    contextmenu: handleContextMenu,
+  };
+  const roots = new Map();
+  const handledEvents = new WeakSet();
+  const handleEvent = (event) =&gt; {
+    if (handledEvents.has(event)) return;
+    handledEvents.add(event);
+    handlers[event.type](event);
+  };
+  const discoverRoots = (node) =&gt; {
+    if (node.shadowRoot) listen(node.shadowRoot);
+    for (const element of node.querySelectorAll(&quot;*&quot;)) {
+      if (element.shadowRoot) listen(element.shadowRoot);
+    }
+  };
+  const listen = (root) =&gt; {
+    if (roots.has(root)) return;
+    for (const type of Object.keys(handlers)) root.addEventListener(type, handleEvent);
+    const observer = new window.MutationObserver((records) =&gt; {
+      for (const { addedNodes } of records) {
+        for (const node of addedNodes) {
+          if (node.nodeType === Node.ELEMENT_NODE) discoverRoots(node);
+        }
+      }
+      for (const [root, cleanup] of roots) {
+        if (root.host &amp;&amp; !root.host.isConnected) {
+          cleanup();
+          roots.delete(root);
+        }
+      }
+      if (activeTrigger &amp;&amp; !activeTrigger.isConnected) closeTooltip(false);
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    roots.set(root, () =&gt; {
+      observer.disconnect();
+      for (const type of Object.keys(handlers)) root.removeEventListener(type, handleEvent);
+    });
+    discoverRoots(root);
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    for (const cleanup of roots.values()) cleanup();
+    roots.clear();
+    tooltip = null;
+  };
+
+  // Events between children of one shadow root never reach the document.
+  listen(document);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-carousel&quot;&gt;
+  (() =&gt; {
+    for (const root of document.querySelectorAll(&quot;.viz-carousel&quot;)) {
+      const panels = Array.from(
+        root.querySelectorAll(&quot;:scope &gt; [data-variant]&quot;),
+      );
+      if (panels.length === 0) {
+        continue;
+      }
+      root.setAttribute(&quot;role&quot;, &quot;group&quot;);
+      panels.forEach((panel, index) =&gt; {
+        panel.hidden = index !== 0;
+        panel.setAttribute(&quot;role&quot;, &quot;group&quot;);
+        if (!panel.hasAttribute(&quot;aria-label&quot;)) {
+          panel.setAttribute(&quot;aria-label&quot;, panel.dataset.variant);
+        }
+      });
+      root.dataset.activeVariant = panels[0].dataset.variant;
+      if (panels.length === 1) {
+        continue;
+      }
+
+      const controls = document.createElement(&quot;div&quot;);
+      controls.className = &quot;viz-carousel-controls&quot;;
+      // Portable copy of the settings dropdown&#x27;s legacy glyph; no 14px icon-package preset matches it.
+      // https://github.com/openai/openai/blob/master/codex/codex-apps/webview/src/icons/chevron.svg
+      controls.innerHTML = `
+      &lt;button type=&quot;button&quot; class=&quot;viz-carousel-previous cursor-interaction&quot;&gt;&lt;i data-lucide=&quot;chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;details class=&quot;viz-carousel-picker&quot;&gt;
+        &lt;summary class=&quot;cursor-interaction&quot;&gt;
+          &lt;span class=&quot;viz-carousel-count tabular-nums&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;viz-carousel-name&quot;&gt;&lt;/span&gt;
+          &lt;svg class=&quot;viz-carousel-caret&quot; width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 20 21&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;
+            &lt;path d=&quot;M15.2793 7.71101C15.539 7.45131 15.961 7.45131 16.2207 7.71101C16.4804 7.97071 16.4804 8.39272 16.2207 8.65242L10.4707 14.4024C10.211 14.6621 9.78902 14.6621 9.52932 14.4024L3.77932 8.65242L3.69436 8.54792C3.52385 8.28979 3.55205 7.93828 3.77932 7.71101C4.00659 7.48374 4.3581 7.45554 4.61623 7.62605L4.72073 7.71101L10 12.9903L15.2793 7.71101Z&quot; fill=&quot;currentColor&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;0.6&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/summary&gt;
+        &lt;div class=&quot;viz-carousel-options&quot;&gt;&lt;/div&gt;
+      &lt;/details&gt;
+      &lt;button type=&quot;button&quot; class=&quot;viz-carousel-next cursor-interaction&quot;&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;`;
+      const previous = controls.querySelector(&quot;.viz-carousel-previous&quot;);
+      const next = controls.querySelector(&quot;.viz-carousel-next&quot;);
+      const picker = controls.querySelector(&quot;.viz-carousel-picker&quot;);
+      const summary = picker.querySelector(&quot;summary&quot;);
+      const count = controls.querySelector(&quot;.viz-carousel-count&quot;);
+      const name = controls.querySelector(&quot;.viz-carousel-name&quot;);
+      const options = controls.querySelector(&quot;.viz-carousel-options&quot;);
+      const status = document.createElement(&quot;span&quot;);
+      status.className = &quot;sr-only&quot;;
+      status.setAttribute(&quot;role&quot;, &quot;status&quot;);
+      status.setAttribute(&quot;aria-live&quot;, &quot;polite&quot;);
+      status.setAttribute(&quot;aria-atomic&quot;, &quot;true&quot;);
+      previous.setAttribute(
+        &quot;aria-label&quot;,
+        root.dataset.previousLabel ?? &quot;Previous variant&quot;,
+      );
+      next.setAttribute(&quot;aria-label&quot;, root.dataset.nextLabel ?? &quot;Next variant&quot;);
+
+      let active = 0;
+      let mousePointerId = null;
+      let summaryPointerHandled = false;
+      summary.addEventListener(&quot;pointerdown&quot;, (event) =&gt; {
+        summaryPointerHandled =
+          event.pointerType === &quot;mouse&quot; &amp;&amp; event.button === 0 &amp;&amp; !event.ctrlKey;
+        if (!summaryPointerHandled) {
+          return;
+        }
+        event.preventDefault();
+        summary.focus({ preventScroll: true });
+        picker.open = !picker.open;
+        mousePointerId = picker.open ? event.pointerId : null;
+      });
+      summary.addEventListener(&quot;click&quot;, (event) =&gt; {
+        if (summaryPointerHandled &amp;&amp; event.detail &gt; 0) {
+          event.preventDefault();
+        }
+      });
+      const choices = panels.map((panel, index) =&gt; {
+        const choice = document.createElement(&quot;button&quot;);
+        choice.type = &quot;button&quot;;
+        choice.className = &quot;cursor-interaction&quot;;
+        choice.textContent = panel.dataset.variant;
+        choice.addEventListener(&quot;click&quot;, () =&gt; {
+          select(index);
+          summary.focus();
+        });
+        choice.addEventListener(&quot;pointerup&quot;, (event) =&gt; {
+          if (
+            picker.open &amp;&amp;
+            event.pointerType === &quot;mouse&quot; &amp;&amp;
+            event.button === 0 &amp;&amp;
+            event.pointerId === mousePointerId
+          ) {
+            choice.click();
+          }
+        });
+        options.appendChild(choice);
+        return choice;
+      });
+      const select = (index) =&gt; {
+        const changed = active !== index;
+        active = index;
+        panels.forEach((panel, position) =&gt; {
+          panel.hidden = position !== active;
+          choices[position].setAttribute(
+            &quot;aria-current&quot;,
+            String(position === active),
+          );
+        });
+        root.dataset.activeVariant = panels[active].dataset.variant;
+        count.textContent = `${active + 1} / ${panels.length}`;
+        name.textContent = panels[active].dataset.variant;
+        picker.open = false;
+        mousePointerId = null;
+        if (changed) {
+          status.textContent = `${count.textContent}: ${name.textContent}`;
+        }
+      };
+      previous.addEventListener(&quot;click&quot;, () =&gt;
+        select((active + panels.length - 1) % panels.length),
+      );
+      next.addEventListener(&quot;click&quot;, () =&gt;
+        select((active + 1) % panels.length),
+      );
+      picker.addEventListener(&quot;keydown&quot;, (event) =&gt; {
+        if (event.key === &quot;Escape&quot; &amp;&amp; picker.open) {
+          event.preventDefault();
+          picker.open = false;
+          mousePointerId = null;
+          summary.focus();
+          return;
+        }
+        if (event.altKey || event.ctrlKey || event.metaKey) {
+          return;
+        }
+        const index = choices.indexOf(document.activeElement);
+        let nextIndex;
+        if (event.key === &quot;ArrowDown&quot;) {
+          nextIndex = index &lt; 0 ? active : (index + 1) % choices.length;
+        } else if (event.key === &quot;ArrowUp&quot;) {
+          nextIndex = index &lt; 0 ? active : (index + choices.length - 1) % choices.length;
+        } else if (picker.open &amp;&amp; event.key === &quot;Home&quot;) {
+          nextIndex = 0;
+        } else if (picker.open &amp;&amp; event.key === &quot;End&quot;) {
+          nextIndex = choices.length - 1;
+        } else {
+          return;
+        }
+        event.preventDefault();
+        picker.open = true;
+        choices[nextIndex].focus();
+      });
+      picker.addEventListener(&quot;focusout&quot;, (event) =&gt; {
+        if (!picker.contains(event.relatedTarget)) {
+          picker.open = false;
+          mousePointerId = null;
+        }
+      });
+      const dismiss = (event) =&gt; {
+        if (!summary.contains(event.target)) {
+          mousePointerId = null;
+        }
+        if (!picker.contains(event.target)) {
+          picker.open = false;
+        }
+      };
+      const endPointerSelection = () =&gt; {
+        mousePointerId = null;
+      };
+      const sizePicker = () =&gt; {
+        root.style.setProperty(
+          &quot;--viz-carousel-picker-height&quot;,
+          `${picker.open ? options.offsetHeight : 0}px`,
+        );
+      };
+      picker.addEventListener(&quot;toggle&quot;, sizePicker);
+      window.addEventListener(&quot;resize&quot;, sizePicker);
+      document.addEventListener(&quot;pointerdown&quot;, dismiss);
+      document.addEventListener(&quot;pointerup&quot;, endPointerSelection);
+      document.addEventListener(&quot;pointercancel&quot;, endPointerSelection);
+      window.addEventListener(&quot;blur&quot;, endPointerSelection);
+      window.addEventListener(
+        &quot;pagehide&quot;,
+        () =&gt; {
+          document.removeEventListener(&quot;pointerdown&quot;, dismiss);
+          document.removeEventListener(&quot;pointerup&quot;, endPointerSelection);
+          document.removeEventListener(&quot;pointercancel&quot;, endPointerSelection);
+          window.removeEventListener(&quot;blur&quot;, endPointerSelection);
+          window.removeEventListener(&quot;resize&quot;, sizePicker);
+        },
+        { once: true },
+      );
+      root.append(controls, status);
+      select(0);
+    }
+  })();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+
+<script>(() => {
+  const frame = document.getElementById("codex-visualization");
+  if (!(frame instanceof HTMLIFrameElement)) {
+    return;
+  }
+  const isShare = document.documentElement.classList.contains(
+    "visualization-share-root",
+  );
+  let viewportHeight = globalThis.innerHeight;
+  let sizeFingerprint = null;
+  let sizeWriteTimeout;
+  let lastSize = null;
+  let pendingSize = null;
+  const storageKey = `codex:visualization-widget-state-v2:${JSON.stringify([
+    globalThis.location.pathname,
+    globalThis.location.search,
+  ])}`;
+  const sizeStorageKey = `${storageKey}:share-size-v1`;
+  const parseState = (serializedState) => {
+    if (
+      typeof serializedState !== "string" ||
+      new TextEncoder().encode(serializedState).length > 16 * 1024
+    ) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    /** @type {unknown} */
+    const state = JSON.parse(serializedState);
+    if (
+      state == null ||
+      typeof state !== "object" ||
+      Array.isArray(state) ||
+      ("imageIds" in state &&
+        (!Array.isArray(state.imageIds) || state.imageIds.length > 0))
+    ) {
+      throw new TypeError("Widget state must be a JSON object");
+    }
+    const storedState = { modelContent: null, privateContent: null, ...state };
+    const canonicalState = JSON.stringify(
+      storedState,
+      (_key, /** @type {unknown} */ value) => {
+        if (typeof value === "number" && !Number.isFinite(value)) {
+          throw new TypeError("Widget state must contain finite numbers");
+        }
+        return value;
+      },
+    );
+    if (new TextEncoder().encode(canonicalState).length > 16 * 1024) {
+      throw new TypeError(
+        "Widget state must be a JSON object of at most 16 KiB",
+      );
+    }
+    return storedState;
+  };
+  let storage = null;
+  let state = null;
+  try {
+    const localStorage = globalThis.localStorage;
+    const probeKey = `${storageKey}:probe`;
+    localStorage.setItem(probeKey, "1");
+    localStorage.removeItem(probeKey);
+    storage = localStorage;
+    const savedState = storage.getItem(storageKey);
+    if (savedState != null) {
+      try {
+        state = parseState(savedState);
+      } catch {
+        // Invalid saved state does not disable future writes.
+      }
+    }
+  } catch {
+    storage = null;
+  }
+  const persistSize = () => {
+    globalThis.clearTimeout(sizeWriteTimeout);
+    if (pendingSize == null) {
+      return;
+    }
+    try {
+      storage?.setItem(sizeStorageKey, pendingSize);
+    } catch {
+      // A denied or full cache must not affect the visualization.
+    }
+    pendingSize = null;
+  };
+  if (isShare) {
+    globalThis.addEventListener("pagehide", persistSize);
+  }
+  const initialGlobals = {
+    widgetState: state,
+    statePersistence: storage == null ? "none" : "local",
+  };
+
+  const channel = new MessageChannel();
+  channel.port1.addEventListener("message", (event) => {
+    const data = event.data;
+    if (typeof data !== "object" || data == null) {
+      return;
+    }
+    if (data.type === "widget-state-write") {
+      if (!Number.isSafeInteger(data.id) || data.id <= 0) {
+        return;
+      }
+      let ok = false;
+      try {
+        if (storage != null) {
+          const state = parseState(data.state);
+          storage.setItem(storageKey, JSON.stringify(state));
+          ok = true;
+        }
+      } catch {
+        // Storage denial, quota limits, and invalid state return a failed receipt.
+      }
+      channel.port1.postMessage({
+        type: "widget-state-result",
+        id: data.id,
+        ok,
+      });
+      return;
+    }
+    if (data.type === "height") {
+      const height = data.height;
+      if (
+        typeof height !== "number" ||
+        !Number.isFinite(height) ||
+        height < 0
+      ) {
+        return;
+      }
+      if (height <= 10_000) {
+        const width = isShare && storage != null ? frame.clientWidth : null;
+        frame.style.height = Math.ceil(height) + "px";
+        if (isShare && storage != null) {
+          const size = JSON.stringify({
+            fingerprint: sizeFingerprint,
+            width,
+            viewportHeight: globalThis.innerHeight,
+            dark: globalThis.matchMedia("(prefers-color-scheme: dark)").matches,
+            scale: globalThis.devicePixelRatio,
+            height: Math.ceil(height),
+          });
+          if (size !== lastSize) {
+            lastSize = size;
+            pendingSize = size;
+            globalThis.clearTimeout(sizeWriteTimeout);
+            sizeWriteTimeout = globalThis.setTimeout(persistSize, 100);
+          }
+        }
+      }
+      if (isShare) {
+        // Keep unusually tall content accessible without accepting an unbounded height.
+        if (height > 10_000 && Number.parseFloat(frame.style.height) === 0) {
+          frame.style.removeProperty("height");
+        }
+        frame.scrolling = height > 10_000 ? "auto" : "no";
+        document.documentElement.classList.add("visualization-share-ready");
+      }
+      return;
+    }
+    if (data.type === "scroll-to") {
+      const top = data.top;
+      if (
+        typeof top === "number" &&
+        Number.isFinite(top) &&
+        top >= 0 &&
+        globalThis.navigator.userActivation?.isActive === true
+      ) {
+        globalThis.scrollTo({
+          top: Math.ceil(
+            globalThis.scrollY + frame.getBoundingClientRect().top + top,
+          ),
+        });
+      }
+      return;
+    }
+    if (data.type === "open-external") {
+      const rawHref = data.href;
+      if (typeof rawHref !== "string") {
+        return;
+      }
+      let href;
+      try {
+        const url = new URL(rawHref, document.baseURI);
+        if (url.protocol !== "https:") {
+          return;
+        }
+        href = url.href;
+      } catch {
+        return;
+      }
+      if (globalThis.navigator.userActivation?.isActive === true) {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.rel = "noopener noreferrer";
+        anchor.target = "_blank";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+      }
+      return;
+    }
+    if (data.type === "follow-up") {
+      const prompt = data.prompt;
+      if (
+        typeof prompt !== "string" ||
+        globalThis.navigator.userActivation?.isActive !== true
+      ) {
+        return;
+      }
+      const title = data.title;
+      globalThis.prompt(typeof title === "string" ? title : prompt, prompt);
+    }
+  });
+  channel.port1.start();
+  const srcdoc = frame.dataset.srcdoc;
+  if (srcdoc == null) {
+    return;
+  }
+  globalThis.addEventListener("resize", () => {
+    const height = Number.parseFloat(frame.style.height);
+    if (!isShare && (!Number.isFinite(height) || height <= viewportHeight)) {
+      frame.style.removeProperty("height");
+    }
+    viewportHeight = globalThis.innerHeight;
+    channel.port1.postMessage({ type: "measure" });
+  });
+  frame.addEventListener(
+    "load",
+    () => {
+      frame.contentWindow?.postMessage(
+        { type: "codex-visualization-initialize" },
+        "*",
+        [channel.port2],
+      );
+    },
+    { once: true },
+  );
+  // Match the trusted bootstrap element, not the same text in an authored title.
+  const frameHtml = srcdoc.replace(
+    '<script type="application/json" id="codex-visualization-widget-state">__CODEX_VISUALIZATION_WIDGET_STATE__<\/script>',
+    () =>
+      '<script type="application/json" id="codex-visualization-widget-state">' +
+      JSON.stringify(initialGlobals).replaceAll("<", "\\u003c") +
+      "<\/script>",
+  );
+  if (isShare && storage != null) {
+    // Fingerprint the rendered document, including restored widget state, without
+    // storing its content. This is a layout cache, not a security identity.
+    let hash = 5381;
+    for (let index = 0; index < frameHtml.length; index += 1) {
+      hash = (hash * 33 + frameHtml.charCodeAt(index)) % 4_294_967_296;
+    }
+    sizeFingerprint = hash.toString(36);
+    try {
+      const size = JSON.parse(storage.getItem(sizeStorageKey) ?? "null");
+      if (
+        size?.fingerprint === sizeFingerprint &&
+        size.width === frame.clientWidth &&
+        size.viewportHeight === globalThis.innerHeight &&
+        size.dark ===
+          globalThis.matchMedia("(prefers-color-scheme: dark)").matches &&
+        size.scale === globalThis.devicePixelRatio &&
+        typeof size.height === "number" &&
+        Number.isFinite(size.height) &&
+        size.height >= 0 &&
+        size.height <= 10_000
+      ) {
+        frame.style.height = size.height + "px";
+      }
+    } catch {
+      // Ignore missing or invalid cache entries and measure the live frame.
+    }
+  }
+  frame.srcdoc = frameHtml;
+  delete frame.dataset.srcdoc;
+})();
+</script>
+</body>
+</html>
